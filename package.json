@@ -1,0 +1,39 @@
+{
+  "name": "@powerfulyang/utils",
+  "version": "0.7.14",
+  "description": "common utils",
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "sideEffects": false,
+  "author": {
+    "name": "powerfulyang"
+  },
+  "repository": "https://github.com/powerfulyang/tools",
+  "license": "MIT",
+  "keywords": [
+    "utils"
+  ],
+  "files": [
+    "dist"
+  ],
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "scripts": {
+    "build": "rimraf dist && run-p build:*",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:module": "tsc -p tsconfig.module.json",
+    "watch:build": "rimraf dist && tsc -p tsconfig.main.json --watch",
+    "prettier": "prettier \"src/**/*.ts\" --write",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@powerfulyang/lint": "^0.2.12",
+    "@types/ip": "^1.1.0"
+  },
+  "dependencies": {
+    "ip": "^1.1.5",
+    "reflect-metadata": "^0.1.13"
+  }
+}
