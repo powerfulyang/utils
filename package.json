@@ -29,7 +29,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "^0.2.13",
+    "@powerfulyang/lint": "^0.2.16",
     "@types/ip": "^1.1.0"
   },
   "dependencies": {
