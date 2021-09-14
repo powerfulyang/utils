@@ -5,3 +5,4 @@ export * from './scrollToTop';
 export * from './supportWebGL';
 export * from './getElementCenterPoint';
 export * from './CanvasUtils';
+export * from './copyToClipBoard';
