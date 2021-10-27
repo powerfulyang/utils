@@ -1,8 +1,9 @@
-import { ConstructorFunction } from '../../types';
+import type { ConstructorFunction } from '../../util';
 
-export const Freeze = () => {
-  return <T extends ConstructorFunction>(constructor: T) => {
-    return class extends constructor {
+export const Freeze =
+  () =>
+  <T extends ConstructorFunction>(constructor: T) =>
+    class extends constructor {
       constructor(...rest: any[]) {
         super(...rest);
         Reflect.ownKeys(this).forEach((item) => {
@@ -15,5 +16,3 @@ export const Freeze = () => {
         Reflect.preventExtensions(this);
       }
     };
-  };
-};

@@ -1,11 +1,8 @@
-import { ReturnTypedFunction, VoidFunction } from '../../types';
+import type { ReturnTypedFunction, VoidFunction } from '../../util';
 
-export const Memoize = (hashFunction?: ReturnTypedFunction): MethodDecorator => {
-  return (
-    _target: Object,
-    _propertyKey: string | symbol,
-    descriptor: TypedPropertyDescriptor<any>,
-  ) => {
+export const Memoize =
+  (hashFunction?: ReturnTypedFunction): MethodDecorator =>
+  (_target: Object, _propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
     if (descriptor.value != null) {
       Reflect.set(descriptor, 'value', getNewFunction(descriptor.value, hashFunction));
     } else if (descriptor.get != null) {
@@ -14,7 +11,6 @@ export const Memoize = (hashFunction?: ReturnTypedFunction): MethodDecorator => 
       throw new Error('Only put a Memoize() decorator on a method or get accessor.');
     }
   };
-};
 
 let counter = 0;
 function getNewFunction(

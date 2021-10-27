@@ -1,4 +1,4 @@
-import { Dict } from './types';
+import type { Dict } from './types';
 
 export function isNumber(value: any): value is number {
   return typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value);
@@ -75,7 +75,7 @@ export const isEmpty = (value: any) => {
   return value == null || value === '';
 };
 
-export const __dev__ = process.env.NODE_ENV !== 'production';
-export const __prod__ = process.env.NODE_ENV === 'production';
-export const __test__ = process.env.NODE_ENV === 'test';
+export const isDevProcess = process.env.NODE_ENV !== 'production';
+export const isProdProcess = process.env.NODE_ENV === 'production';
+export const isTestProcess = process.env.NODE_ENV === 'test';
 export const isClient = typeof window === 'object';

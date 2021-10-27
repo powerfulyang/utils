@@ -32,6 +32,4 @@ if (isClient) {
   });
 }
 
-export const isSupportWebp = (): boolean => {
-  return result;
-};
+export const isSupportWebp = (): boolean => result;

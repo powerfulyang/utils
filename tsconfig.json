@@ -1,12 +1,10 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "lib": ["dom", "es6", "es2017", "esnext"],
+    "target": "ES5",
+    "module": "CommonJS",
     "sourceMap": true,
     "outDir": "./dist/main",
     "moduleResolution": "node",
-    "removeComments": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
@@ -25,5 +23,5 @@
     "skipLibCheck": true
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts", "__test__"]
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }

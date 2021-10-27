@@ -1,10 +1,10 @@
 {
   "name": "@powerfulyang/utils",
-  "version": "0.7.20",
+  "version": "0.9.1",
   "description": "common utils",
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
-  "sideEffects": false,
+  "types": "dist/main/index.js",
   "author": {
     "name": "powerfulyang"
   },
@@ -14,7 +14,8 @@
     "utils"
   ],
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "browserslist": [
     "last 2 versions"
@@ -25,16 +26,16 @@
     "build:module": "tsc -p tsconfig.module.json",
     "watch:build": "rimraf dist && tsc -p tsconfig.main.json --watch",
     "prettier": "prettier \"src/**/*.ts\" --write",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --format=pretty ./src --fix",
     "test": "jest"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "^0.2.20",
-    "@types/ip": "^1.1.0"
+    "@powerfulyang/lint": "^0.4.0",
+    "@types/ip": "^1.1.0",
+    "npm-run-all": "^4.1.5"
   },
   "dependencies": {
     "ip": "^1.1.5",
     "reflect-metadata": "^0.1.13"
-  },
-  "gitHead": "972987c947501d8cc10ac38b6875e565c81f6880"
+  }
 }

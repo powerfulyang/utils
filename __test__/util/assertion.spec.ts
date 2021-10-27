@@ -28,6 +28,12 @@ describe('test assertion', () => {
   it('isNumeric', function () {
     expect(isNumeric('1.1')).toBeTruthy();
     expect(isNumeric(1.1)).toBeTruthy();
+    expect(isNumeric('+1')).toBeTruthy();
+    expect(isNumeric('-1')).toBeTruthy();
+    expect(isNumeric('a1')).toBeFalsy();
+    expect(isNumeric('1+')).toBeFalsy();
+    expect(isNumeric('1-')).toBeFalsy();
+    expect(isNumeric('1.1.1')).toBeFalsy();
 
     expect(isNumeric(undefined)).toBeFalsy();
     expect(isNumeric(1 / 0)).toBeFalsy();
