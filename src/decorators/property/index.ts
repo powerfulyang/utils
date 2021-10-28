@@ -1,1 +1,1 @@
-export * from './toEN-US';
+export * from './toLocaleString';

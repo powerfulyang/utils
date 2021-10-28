@@ -1,4 +1,8 @@
-export const isIdCard = (sId: string): boolean => {
+/**
+ * 简单判断是不是有效的身份证号码
+ * @param sId
+ */
+export const isValidIdCard = (sId: string): boolean => {
   if (!/(^\d{15}$)|(^\d{17}(\d|X|x)$)/.test(sId)) {
     return false;
   }
@@ -39,9 +43,9 @@ export const isIdCard = (sId: string): boolean => {
     81: '香港',
     82: '澳门',
     91: '国外',
-  } as any;
-  const prov = parseInt(sId.substr(0, 2), 10);
-  if (!aCity[prov]) {
+  };
+  const provinceNo = parseInt(sId.substr(0, 2), 10);
+  if (!Reflect.get(aCity, provinceNo)) {
     return false;
   }
 

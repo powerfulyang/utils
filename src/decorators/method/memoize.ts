@@ -1,17 +1,5 @@
 import type { ReturnTypedFunction, VoidFunction } from '../../util';
 
-export const Memoize =
-  (hashFunction?: ReturnTypedFunction): MethodDecorator =>
-  (_target: Object, _propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
-    if (descriptor.value != null) {
-      Reflect.set(descriptor, 'value', getNewFunction(descriptor.value, hashFunction));
-    } else if (descriptor.get != null) {
-      Reflect.set(descriptor, 'get', getNewFunction(descriptor.value, hashFunction));
-    } else {
-      throw new Error('Only put a Memoize() decorator on a method or get accessor.');
-    }
-  };
-
 let counter = 0;
 function getNewFunction(
   originalMethod: VoidFunction,
@@ -27,7 +15,7 @@ function getNewFunction(
 
     if (hashFunction || args.length > 0) {
       // Get or create map
-      if (!this.hasOwnProperty(propMapName)) {
+      if (!('propMapName' in this)) {
         Reflect.defineProperty(this, propMapName, {
           configurable: false,
           enumerable: false,
@@ -49,7 +37,7 @@ function getNewFunction(
         returnedValue = originalMethod.apply(this, args);
         myMap.set(hashKey, returnedValue);
       }
-    } else if (this.hasOwnProperty(propValName)) {
+    } else if ('propValName' in this) {
       returnedValue = Reflect.get(this, propValName);
     } else {
       returnedValue = originalMethod.apply(this, args);
@@ -63,3 +51,15 @@ function getNewFunction(
     return returnedValue;
   };
 }
+
+export const Memoize =
+  (hashFunction?: ReturnTypedFunction): MethodDecorator =>
+  (_target: Object, _propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
+    if (descriptor.value != null) {
+      Reflect.set(descriptor, 'value', getNewFunction(descriptor.value, hashFunction));
+    } else if (descriptor.get != null) {
+      Reflect.set(descriptor, 'get', getNewFunction(descriptor.value, hashFunction));
+    } else {
+      throw new Error('Only put a Memoize() decorator on a method or get accessor.');
+    }
+  };

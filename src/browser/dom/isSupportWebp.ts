@@ -11,7 +11,7 @@ const kTestImages = {
     'UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA',
 };
 
-function check_webp_feature<T extends keyof typeof kTestImages>(
+function checkWebpFeature<T extends keyof typeof kTestImages>(
   feature: T,
   callback: (bool: boolean) => void,
 ) {
@@ -27,7 +27,7 @@ function check_webp_feature<T extends keyof typeof kTestImages>(
 }
 
 if (isClient) {
-  check_webp_feature('alpha', (bool) => {
+  checkWebpFeature('alpha', (bool) => {
     result = bool;
   });
 }

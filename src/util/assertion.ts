@@ -4,8 +4,6 @@ export function isNumber(value: any): value is number {
   return typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value);
 }
 
-export const isNotNumber = (value: any) => !isNumber(value);
-
 export function isNumeric(value: any) {
   return value != null && value - parseFloat(value) + 1 >= 0;
 }
@@ -30,19 +28,21 @@ export const isObject = (value: any): value is Dict => {
   return value != null && (type === 'object' || type === 'function');
 };
 
-export function getTag(value: any) {
-  if (value == null) {
-    return value === undefined ? '[object Undefined]' : '[object Null]';
-  }
-  return toString.call(value);
-}
+export const getPrototype = (value: object) => Object.getPrototypeOf(value);
+
+export const getType = (value: any) => Object.prototype.toString.call(value).slice(8, -1);
+
+export const getInstanceType = (value: any) => {
+  const type = getType(value);
+  return type === 'Object' ? getPrototype(value).constructor.name : type;
+};
 
 export function isObjectLike(value: any) {
   return typeof value === 'object' && value !== null;
 }
 
 export const isPlainObject = (value: any) => {
-  if (!isObjectLike(value) || getTag(value) !== '[object Object]') {
+  if (!isObjectLike(value) || getType(value) !== 'Object') {
     return false;
   }
   if (Object.getPrototypeOf(value) === null) {
@@ -61,19 +61,29 @@ export function isNotEmptyObject(value: any): value is object {
   return value && !isEmptyObject(value);
 }
 
-export const isNull = (value: any): value is null => value == null;
+export const isNull = (value: any): value is null => value === null;
 
 // String assertions
 export function isString(value: any): value is string {
-  return Object.prototype.toString.call(value) === '[object String]';
+  return getType(value) === 'String';
+}
+
+// Blob assertions
+export function isBlob(value: any): value is Blob {
+  return getType(value) === 'Blob';
 }
 
 // Empty assertions
-export const isEmpty = (value: any) => {
-  if (isArray(value)) return isEmptyArray(value);
-  if (isObject(value)) return isEmptyObject(value);
-  return value == null || value === '';
-};
+export function isEmpty(value: any): boolean {
+  return (
+    isUndefined(value) ||
+    isNull(value) ||
+    isEmptyArray(value) ||
+    (isString(value) && value === '') ||
+    isEmptyObject(value) ||
+    value === 0
+  );
+}
 
 export const isDevProcess = process.env.NODE_ENV !== 'production';
 export const isProdProcess = process.env.NODE_ENV === 'production';

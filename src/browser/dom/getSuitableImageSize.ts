@@ -1,4 +1,6 @@
 /**
+ * @deprecated
+ * 请使用 css object-fit: contain;
  * 全屏展示图片时获取图片合适的大小
  */
 export function getSuitableImageSize(

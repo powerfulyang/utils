@@ -1,5 +1,13 @@
 import ip from 'ip';
 
-export const ipV4ToLong = (ipStr: string): number => ip.toLong(ipStr);
+/**
+ * IPv4 address to long
+ * @param ipAddress
+ */
+export const ip2long = (ipAddress: string): number => ip.toLong(ipAddress);
 
-export const ipV4FromLong = (ipLong: number): string => ip.fromLong(ipLong);
+/**
+ * Long to IPv4 address
+ * @param ipLong
+ */
+export const long2ip = (ipLong: number): string => ip.fromLong(ipLong);

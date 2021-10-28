@@ -1,7 +1,12 @@
 export const copyToClipBoard = (state: string | Blob) => {
-  const isString = typeof state === 'string';
+  if (state instanceof Blob) {
+    const item = new ClipboardItem({
+      blob: Promise.resolve(state),
+    });
+    return navigator.clipboard.write([item]);
+  }
   const item = new ClipboardItem({
-    [isString ? 'text/plain' : (state as Blob).type]: Promise.resolve(state),
+    text: Promise.resolve(state),
   });
   return navigator.clipboard.write([item]);
 };

@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 export * from './method';
 export * from './class';
 export * from './property';

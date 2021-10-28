@@ -5,4 +5,5 @@ module.exports = {
   },
   testMatch: ['**/*.spec.(ts|tsx)'],
   testPathIgnorePatterns: ['./node_modules/', './dist/'],
+  testEnvironment: 'jsdom',
 };
