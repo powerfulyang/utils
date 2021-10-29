@@ -1,7 +1,21 @@
-export * from './getSuitableImageSize';
-export * from './isSupportWebp';
-export * from './detectDeviceType';
-export * from './isSupportWebGL';
-export * from './getElementCenterPoint';
-export * from './CanvasUtils';
-export * from './copyToClipBoard';
+export { getSuitableImageSize } from './getSuitableImageSize';
+export { isSupportWebp } from './isSupportWebp';
+export {
+  isLinux,
+  isIOS,
+  isWechat,
+  isWechatWork,
+  isMobile,
+  isAndroid,
+  isMac,
+  isPC,
+  isPhone,
+  isTablet,
+  isWechatBrowser,
+  isWechatMiniProgram,
+  isWindows,
+} from './detectDeviceType';
+export { isSupportWebGL } from './isSupportWebGL';
+export { getElementCenterPoint } from './getElementCenterPoint';
+export { CanvasUtils } from './CanvasUtils';
+export { copyToClipBoard } from './copyToClipBoard';

@@ -3,7 +3,7 @@
     "target": "ES5",
     "module": "CommonJS",
     "sourceMap": true,
-    "outDir": "./dist/main",
+    "outDir": "./dist",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -18,7 +18,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "declaration": true,
     "skipLibCheck": true
   },

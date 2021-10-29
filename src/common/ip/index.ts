@@ -1,1 +1,1 @@
-export * from './ipv4';
+export { ip2long, long2ip } from './ipv4';

@@ -12,4 +12,4 @@ export function isEnglish(str: string): boolean {
   return /^[A-Za-z]+$/.test(str);
 }
 
-export * from './isValidIdCard';
+export { isValidIdCard } from './isValidIdCard';
