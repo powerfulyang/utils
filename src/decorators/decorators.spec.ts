@@ -9,7 +9,7 @@ describe('test decorators', () => {
     public money: string;
 
     @Validate()
-    testRequireParam(@Required() param: string) {
+    static testRequireParam(@Required() param: string) {
       return param;
     }
 
@@ -23,9 +23,9 @@ describe('test decorators', () => {
   it('test Required', () => {
     const test = new TestClass();
     test.money = '123133.22222';
-    expect(test.testRequireParam('')).toBe('');
+    expect(TestClass.testRequireParam('')).toBe('');
     try {
-      test.testRequireParam(undefined as any);
+      TestClass.testRequireParam(undefined as any);
     } catch (e) {
       expect(e.message).toBe('Missing required parameter at index 0');
     }

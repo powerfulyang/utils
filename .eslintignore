@@ -1,4 +1,2 @@
 # Created by .ignore support plugin (hsz.mobi)
-__test__
-src/**/*.spec.ts
 *.js

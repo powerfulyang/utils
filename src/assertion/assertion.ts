@@ -1,4 +1,4 @@
-import type { Dict } from './types';
+import type { Dict } from '../type/types';
 
 export function isNumber(value: any): value is number {
   return typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value);
@@ -83,6 +83,13 @@ export function isEmpty(value: any): boolean {
     isEmptyObject(value) ||
     value === 0
   );
+}
+
+/**
+ * Asserts that the value is void.
+ */
+export function isVoid(value: any): value is void {
+  return value === undefined || value === null;
 }
 
 export const isDevProcess = process.env.NODE_ENV !== 'production';

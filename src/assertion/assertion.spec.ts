@@ -17,6 +17,7 @@ import {
   isPlainObject,
   isString,
   isUndefined,
+  isVoid,
 } from './assertion';
 
 describe('assertion', () => {
@@ -214,5 +215,15 @@ describe('assertion', () => {
     expect(isEmpty(Buffer.from(''))).toBe(true);
     expect(isEmpty(Buffer)).toBe(false);
     expect(isEmpty(new Blob())).toBe(true);
+  });
+
+  /**
+   * isVoid
+   */
+  it('isVoid', () => {
+    expect(isVoid(undefined)).toBe(true);
+    expect(isVoid(null)).toBe(true);
+    expect(isVoid('')).toBe(false);
+    expect(isVoid((() => {})())).toBe(true);
   });
 });
