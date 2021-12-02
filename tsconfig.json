@@ -3,7 +3,7 @@
     "target": "ES5",
     "module": "CommonJS",
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "./dist/main",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "strictNullChecks": true,
