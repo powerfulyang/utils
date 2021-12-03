@@ -1,3 +1,5 @@
+import type { VoidFunction } from './types';
+
 export class Test {
   constructor(public name: string) {
     this.name = name;
@@ -21,3 +23,9 @@ export const cParameters: CParameters = ['name'];
 export function f1(this: ThisParameterType<string>, a: number, b: number, c: number) {
   return a + b + c + Number(this);
 }
+
+export type A = VoidFunction<[number, string]>;
+
+const funcA: A = (a, b) => a + b;
+
+funcA(1, 'a');
