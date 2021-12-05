@@ -6,7 +6,7 @@ import { Required, ToLocaleString, Validate } from './index';
 describe('test decorators', () => {
   class TestClass {
     @ToLocaleString()
-    public money: string;
+    public money: string | undefined;
 
     @Validate()
     static testRequireParam(@Required() param: string) {
@@ -27,7 +27,7 @@ describe('test decorators', () => {
     try {
       TestClass.testRequireParam(undefined as any);
     } catch (e) {
-      expect(e.message).toBe('Missing required parameter at index 0');
+      expect((e as Error).message).toBe('Missing required parameter at index 0');
     }
     expect(test.getMoney()).toBe('CN¥123,133.22');
   });

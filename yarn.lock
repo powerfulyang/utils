@@ -579,10 +579,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@powerfulyang/lint@^0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@powerfulyang/lint/-/lint-0.7.2.tgz#a9292021a45c6a2ee01f149ff820fc86a5c0cd1c"
-  integrity sha512-RKTqFpKD7QIum6sA1mtNpEqCJgl5hZJrmerm7RobgDY9Z2TNabu8XVkvcqB7A8tnt2Jp9LwNNZ4A8sx46QKKJA==
+"@powerfulyang/lint@^0.7.9":
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/@powerfulyang/lint/-/lint-0.7.9.tgz#1b124878700a1521488a0d48dbf29bf93fe57727"
+  integrity sha512-AdziS7VfREboL06aFNtkJXiGgC+VZR/7FTug2aR8u/3najt8Hs96Zgg4qCC3bJkwkrTyNdvnBF/nIm13wQ9uYw==
   dependencies:
     "@types/jest" "^27.0.3"
     "@types/node" "^16.11.10"
@@ -602,6 +602,7 @@
     eslint-plugin-react "^7.27.1"
     eslint-plugin-react-hooks "^4.3.0"
     eslint-plugin-unicorn "^39.0.0"
+    husky "^7.0.4"
     jest "^27.4.0"
     postcss "^8.4.4"
     postcss-scss "^4.0.2"
