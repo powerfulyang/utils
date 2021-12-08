@@ -1,6 +1,6 @@
 {
   "name": "@powerfulyang/utils",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "common utils",
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
