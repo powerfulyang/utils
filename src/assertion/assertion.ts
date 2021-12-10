@@ -1,5 +1,3 @@
-import type { Dict } from '../type/types';
-
 export function isNumber(value: any): value is number {
   return typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value);
 }
@@ -18,14 +16,17 @@ export function isFunction(value: any): value is Function {
   return typeof value === 'function';
 }
 
-export const isDefined = (value: any) => typeof value !== 'undefined' && value !== undefined;
+export const isDefined = <T>(value: T | undefined): value is T => {
+  return typeof value !== 'undefined' && value !== undefined;
+};
 
-export const isUndefined = (value: any): value is undefined =>
-  typeof value === 'undefined' || value === undefined;
+export const isUndefined = (value: any): value is undefined => {
+  return typeof value === 'undefined' || value === undefined;
+};
 
-export const isObject = (value: any): value is Dict => {
+export const isObject = (value: any): value is object => {
   const type = typeof value;
-  return value != null && (type === 'object' || type === 'function');
+  return value !== null && (type === 'object' || type === 'function');
 };
 
 export const getPrototype = (value: object) => Object.getPrototypeOf(value);

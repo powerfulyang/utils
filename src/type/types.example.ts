@@ -42,8 +42,7 @@ const funcA: A = (a, b) => {
   return `${a} ${b}`;
 };
 
-const a = funcA(1, 'a');
-console.log(a);
+export const a = funcA(1, 'a');
 
 const arr: number[] = [];
 const arr2: Array<number> = [1, 2, 3];
