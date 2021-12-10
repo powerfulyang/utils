@@ -1,6 +1,6 @@
 {
   "name": "@powerfulyang/utils",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "description": "common utils",
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
@@ -35,11 +35,9 @@
   },
   "devDependencies": {
     "@powerfulyang/lint": "^0.7.9",
-    "@types/ip": "^1.1.0",
     "npm-run-all": "^4.1.5"
   },
   "dependencies": {
-    "ip": "^1.1.5",
     "reflect-metadata": "^0.1.13",
     "ts-toolbelt": "^9.6.0"
   }
