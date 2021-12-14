@@ -16,6 +16,7 @@ import {
   isObject,
   isPlainObject,
   isString,
+  isTruthy,
   isUndefined,
   isVoid,
 } from './assertion';
@@ -119,6 +120,53 @@ describe('assertion', () => {
     expect(getType({})).toBe('Object');
     expect(getType(Buffer.from(''))).toBe('Uint8Array');
     expect(getType(Buffer)).toBe('Function');
+    expect(getType(new Date())).toBe('Date');
+    expect(getType(/test/)).toBe('RegExp');
+    expect(getType(new Error())).toBe('Error');
+    expect(getType(new Map())).toBe('Map');
+    expect(getType(new Set())).toBe('Set');
+    expect(getType(new WeakMap())).toBe('WeakMap');
+    expect(getType(new WeakSet())).toBe('WeakSet');
+    expect(getType(new Promise(() => {}))).toBe('Promise');
+    expect(getType(new Int8Array())).toBe('Int8Array');
+    expect(getType(new Uint8Array())).toBe('Uint8Array');
+    expect(getType(new Uint8ClampedArray())).toBe('Uint8ClampedArray');
+    expect(getType(new Int16Array())).toBe('Int16Array');
+    expect(getType(new Uint16Array())).toBe('Uint16Array');
+    expect(getType(new Int32Array())).toBe('Int32Array');
+    expect(getType(new Uint32Array())).toBe('Uint32Array');
+    expect(getType(new Float32Array())).toBe('Float32Array');
+    expect(getType(new Float64Array())).toBe('Float64Array');
+    expect(getType(new BigInt64Array())).toBe('BigInt64Array');
+    expect(getType(new BigUint64Array())).toBe('BigUint64Array');
+    expect(getType(new ArrayBuffer(4))).toBe('ArrayBuffer');
+    expect(getType(new SharedArrayBuffer(4))).toBe('SharedArrayBuffer');
+    expect(getType(new DataView(new ArrayBuffer(4)))).toBe('DataView');
+    expect(getType(new URL('https://www.baidu.com'))).toBe('URL');
+    expect(getType(new URLSearchParams('a=1'))).toBe('URLSearchParams');
+    expect(getType(new EventTarget())).toBe('EventTarget');
+    expect(
+      getType(
+        new Event('test', {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+        }),
+      ),
+    ).toBe('Event');
+    expect(
+      getType(
+        new CustomEvent('test', {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+        }),
+      ),
+    ).toBe('CustomEvent');
+    expect(getType(new Blob(['test'], { type: 'text/plain' }))).toBe('Blob');
+    expect(getType(new File([], 'test.txt', { type: 'text/plain' }))).toBe('File');
+    expect(getType(new FormData())).toBe('FormData');
+    expect(getType(new Headers())).toBe('Headers');
   });
 
   /**
@@ -153,6 +201,9 @@ describe('assertion', () => {
     expect(isPlainObject('')).toBe(false);
     expect(isPlainObject(0)).toBe(false);
     expect(isPlainObject({})).toBe(true);
+    expect(isPlainObject({ a: () => {} })).toBe(true);
+    expect(isPlainObject({ a() {} })).toBe(true);
+    expect(isPlainObject([])).toBe(false);
     expect(isEmptyObject({})).toBe(true);
     expect(isEmptyObject({ a: 1 })).toBe(false);
     expect(isEmptyObject(0)).toBe(false);
@@ -225,5 +276,23 @@ describe('assertion', () => {
     expect(isVoid(null)).toBe(true);
     expect(isVoid('')).toBe(false);
     expect(isVoid((() => {})())).toBe(true);
+  });
+
+  /**
+   * isTruthy
+   */
+  it('isTruthy', () => {
+    expect(isTruthy(undefined)).toBe(false);
+    expect(isTruthy(null)).toBe(false);
+    expect(isTruthy('')).toBe(false);
+    expect(isTruthy(0)).toBe(false);
+    expect(isTruthy({})).toBe(true);
+    expect(isTruthy([])).toBe(true);
+    expect(isTruthy(() => {})).toBe(true);
+    expect(isTruthy(Test)).toBe(true);
+    expect(isTruthy(t)).toBe(true);
+    expect(isTruthy(Buffer.from(''))).toBe(true);
+    expect(isTruthy(Buffer)).toBe(true);
+    expect(isTruthy(new Blob())).toBe(true);
   });
 });
