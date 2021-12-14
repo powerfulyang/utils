@@ -39,7 +39,6 @@
   },
   "dependencies": {
     "reflect-metadata": "^0.1.13",
-    "ts-toolbelt": "^9.6.0",
-    "utility-types": "^3.10.0"
+    "ts-toolbelt": "^9.6.0"
   }
 }

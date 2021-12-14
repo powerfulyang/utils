@@ -5,6 +5,7 @@ import {
   getInstanceType,
   getType,
   isArray,
+  isArrayLike,
   isBlob,
   isDefined,
   isEmpty,
@@ -15,8 +16,8 @@ import {
   isNumeric,
   isObject,
   isPlainObject,
+  isPrimitiveValuePlainObject,
   isString,
-  isTruthy,
   isUndefined,
   isVoid,
 } from './assertion';
@@ -144,6 +145,9 @@ describe('assertion', () => {
     expect(getType(new DataView(new ArrayBuffer(4)))).toBe('DataView');
     expect(getType(new URL('https://www.baidu.com'))).toBe('URL');
     expect(getType(new URLSearchParams('a=1'))).toBe('URLSearchParams');
+    const searchParams = new URLSearchParams('??a=1');
+    expect(searchParams.toString()).toBeDefined();
+    expect(getType(searchParams)).toBe('URLSearchParams');
     expect(getType(new EventTarget())).toBe('EventTarget');
     expect(
       getType(
@@ -186,6 +190,7 @@ describe('assertion', () => {
     expect(getInstanceType(() => {})).toBe('Function');
     expect(getInstanceType(Test)).toBe('Function');
     expect(getInstanceType(t)).toBe('Test');
+    expect(getType(t)).toBe('Object');
     expect(getInstanceType([])).toBe('Array');
     expect(getInstanceType({})).toBe('Object');
     expect(getInstanceType(Buffer.from(''))).toBe('Uint8Array');
@@ -203,6 +208,8 @@ describe('assertion', () => {
     expect(isPlainObject({})).toBe(true);
     expect(isPlainObject({ a: () => {} })).toBe(true);
     expect(isPlainObject({ a() {} })).toBe(true);
+    const formData = new FormData();
+    expect(isPlainObject(formData)).toBe(false);
     expect(isPlainObject([])).toBe(false);
     expect(isEmptyObject({})).toBe(true);
     expect(isEmptyObject({ a: 1 })).toBe(false);
@@ -213,6 +220,13 @@ describe('assertion', () => {
     expect(isPlainObject(t)).toBe(false);
     expect(isPlainObject(Buffer.from(''))).toBe(false);
     expect(isPlainObject(Buffer)).toBe(false);
+
+    const obj = {} as { a: 1 } | { a: 1; b: () => void };
+    if (isPrimitiveValuePlainObject(obj)) {
+      obj.a;
+    } else {
+      obj.b();
+    }
   });
 
   /**
@@ -253,7 +267,7 @@ describe('assertion', () => {
   /**
    * isEmpty
    */
-  it('isEmpty', () => {
+  it('isEmpty', (done) => {
     expect(isEmpty(undefined)).toBe(true);
     expect(isEmpty(null)).toBe(true);
     expect(isEmpty('')).toBe(true);
@@ -263,9 +277,32 @@ describe('assertion', () => {
     expect(isEmpty(() => {})).toBe(true);
     expect(isEmpty(Test)).toBe(true);
     expect(isEmpty(t)).toBe(true);
-    expect(isEmpty(Buffer.from(''))).toBe(true);
+    const arrayLike = {
+      length: 0,
+      0: '1',
+    };
+    expect(isArray(arrayLike)).toBe(false);
+    const arr = [1, { a: 1 }];
+    expect(isArray(arr)).toBe(true);
+    expect(isArrayLike(arr)).toBe(true);
+    expect(isArrayLike(arrayLike)).toBe(true);
+    expect(isEmpty(arrayLike)).toBe(false);
+    const buffer = Buffer.from('');
+    expect(isEmpty(buffer)).toBe(true);
+    const buffer2 = Buffer.from('2');
+    expect(isEmpty(buffer2)).toBe(false);
     expect(isEmpty(Buffer)).toBe(false);
-    expect(isEmpty(new Blob())).toBe(true);
+    const blob = new Blob([''], { type: 'text/plain' });
+    const fileReader = new FileReader();
+    fileReader.readAsText(blob);
+    const callback = (result: string) => {
+      expect(isEmpty(result)).toBe(true);
+      done();
+    };
+    fileReader.onloadend = () => {
+      const { result } = fileReader;
+      callback(result as string);
+    };
   });
 
   /**
@@ -276,23 +313,5 @@ describe('assertion', () => {
     expect(isVoid(null)).toBe(true);
     expect(isVoid('')).toBe(false);
     expect(isVoid((() => {})())).toBe(true);
-  });
-
-  /**
-   * isTruthy
-   */
-  it('isTruthy', () => {
-    expect(isTruthy(undefined)).toBe(false);
-    expect(isTruthy(null)).toBe(false);
-    expect(isTruthy('')).toBe(false);
-    expect(isTruthy(0)).toBe(false);
-    expect(isTruthy({})).toBe(true);
-    expect(isTruthy([])).toBe(true);
-    expect(isTruthy(() => {})).toBe(true);
-    expect(isTruthy(Test)).toBe(true);
-    expect(isTruthy(t)).toBe(true);
-    expect(isTruthy(Buffer.from(''))).toBe(true);
-    expect(isTruthy(Buffer)).toBe(true);
-    expect(isTruthy(new Blob())).toBe(true);
   });
 });
