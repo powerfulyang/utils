@@ -15,22 +15,43 @@ export function isWechat(): boolean {
 /**
  * 判断是不是企业微信
  */
-export function isWechatWork(): boolean {
+export function isWxWork(): boolean {
   return isWechat() && /wxwork/i.test(navigator.userAgent);
+}
+
+/**
+ * 判断是不是小程序
+ */
+export function isMiniProgram(): boolean {
+  return /miniProgram/i.test(navigator.userAgent);
 }
 
 /**
  * 判断是不是微信小程序
  */
-export function isWechatMiniProgram(): boolean {
-  return isWechat() && /miniProgram/i.test(navigator.userAgent);
+export function isWxMiniProgram(): boolean {
+  return isMiniProgram() && isWechat() && !isWxWork();
+}
+
+/**
+ * 判断是不是企微小程序
+ */
+export function isWxWorkMiniProgram(): boolean {
+  return isWxWork() && isMiniProgram();
 }
 
 /**
  * 判断是不是微信浏览器
  */
 export function isWechatBrowser(): boolean {
-  return isWechat() && !isWechatWork() && !isWechatMiniProgram();
+  return isWechat() && !isWxWork() && !isMiniProgram();
+}
+
+/**
+ * 判断是不是企业微信浏览器
+ */
+export function isWxWorkBrowser(): boolean {
+  return isWxWork() && !isMiniProgram();
 }
 
 /**
