@@ -1,6 +1,6 @@
 /**
  * @deprecated
- * 请使用 css object-fit: contain;
+ * 请使用 css object-fit: contain; 当然也不是很好 那样子点击区域会有点不好
  * 全屏展示图片时获取图片合适的大小
  */
 export function getSuitableImageSize(

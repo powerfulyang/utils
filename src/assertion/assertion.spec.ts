@@ -303,6 +303,14 @@ describe('assertion', () => {
       const { result } = fileReader;
       callback(result as string);
     };
+    const emptyBlob = new Blob();
+    expect(isEmpty(emptyBlob)).toBe(true);
+    expect(isEmpty(new Blob(['1']))).toBe(false);
+    expect(isEmpty(new Set())).toBe(true);
+    expect(isEmpty(new Set([1]))).toBe(false);
+    expect(isEmpty(new Map())).toBe(true);
+    const map = new Map([['a', 1]]);
+    expect(isEmpty(map)).toBe(false);
   });
 
   /**

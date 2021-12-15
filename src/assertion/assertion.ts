@@ -106,12 +106,12 @@ export const getInstanceType = (value: any) => {
  * not null
  * @param value
  */
-export const isObject = (value: any): value is Object => {
+export const isObject = (value: any): value is object => {
   const type = getType(value);
   return type === 'Object' || type === 'Function';
 };
 
-export function isObjectLike(value: any): value is Object {
+export function isObjectLike(value: any): value is Dict {
   const type = getType(value);
   return type === 'Object';
 }
@@ -177,8 +177,22 @@ export function isBlob(value: any): value is Blob {
   return getType(value) === 'Blob';
 }
 
+export const isEmptyBlob = (value: any): value is Blob => isBlob(value) && value.size === 0;
+
+export const isSet = (value: any): value is Set<any> => {
+  return getType(value) === 'Set';
+};
+
+export const isEmptySet = (value: any): value is Set<any> => isSet(value) && value.size === 0;
+
+export const isMap = (value: any): value is Map<any, any> => {
+  return getType(value) === 'Map';
+};
+
+export const isEmptyMap = (value: any): value is Map<any, any> => isMap(value) && value.size === 0;
+
 /**
- * value is `undefined or null or [] or {} or '' or 0`
+ * value is `undefined or null or [] or {} or '' or 0` or EmptyBlob or EmptySet or EmptyMap
  * @param value
  */
 export function isEmpty(value: any): boolean {
@@ -189,7 +203,10 @@ export function isEmpty(value: any): boolean {
     isEmptyString(value) ||
     isEmptyObject(value) ||
     isEmptyArrayLike(value) ||
-    value === 0
+    value === 0 ||
+    isEmptyBlob(value) ||
+    isEmptySet(value) ||
+    isEmptyMap(value)
   );
 }
 
