@@ -7,7 +7,7 @@
  * @param from
  * @param to
  */
-export const moveArrayItem = (arr: any[], from: number, to: number): any[] => {
+export const moveArrayItem = <T>(arr: T[], from: number, to: number): T[] => {
   const newArr = arr.slice();
   newArr.splice(to < 0 ? newArr.length + to : to, 0, newArr.splice(from, 1)[0]);
   return newArr;
@@ -22,7 +22,7 @@ export const moveArrayItem = (arr: any[], from: number, to: number): any[] => {
  * @param source
  * @param target
  */
-export const swapArrayItem = (arr: any[], source: number, target: number): any[] => {
+export const swapArrayItem = <T>(arr: T[], source: number, target: number): T[] => {
   const newArr = arr.slice();
   const temp = newArr[source];
   newArr[source] = newArr[target];
@@ -31,8 +31,8 @@ export const swapArrayItem = (arr: any[], source: number, target: number): any[]
 };
 
 export const randomIndex = (length: number): number => Math.floor(Math.random() * length);
-export const randomItem = (arr: any[]): any => arr[randomIndex(arr.length)];
-export const randomItems = (arr: any[], count: number): any[] => {
+export const randomItem = <T>(arr: T[]): T => arr[randomIndex(arr.length)];
+export const randomItems = <T>(arr: T[], count: number): T[] => {
   const newArr = arr.slice();
   const result = [];
   for (let i = 0; i < count; i++) {
@@ -41,15 +41,17 @@ export const randomItems = (arr: any[], count: number): any[] => {
   return result;
 };
 
-export const lastItem = (arr: any[]): any => arr[arr.length - 1];
-export const firstItem = (arr: any[]): any => arr[0];
+export const lastItem = <T>(arr: T[]): T => arr[arr.length - 1];
+export const firstItem = <T>(arr: T[]): T => arr[0];
 /**
  * fp
  * @param arr
  * @param index
  */
-export const removeItemWithIndex = (arr: any[], index: number): any[] => {
+export const removeItemWithIndex = <T>(arr: T[], index: number): T[] => {
   const newArr = arr.slice();
   newArr.splice(index, 1);
   return newArr;
 };
+
+export * from './utils';
