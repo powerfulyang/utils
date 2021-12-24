@@ -1,5 +1,4 @@
-import type { Dict } from '../type/types';
-import type { Primitive } from '../assertion/assertion';
+import type { Dict, Primitive } from '../type/types';
 
 export class Collection {
   static unique<T extends Primitive>(array: T[]): T[];

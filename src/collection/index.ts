@@ -1,3 +1,5 @@
+import type { Undefinable } from '../type/types';
+
 /**
  * fp
  * const array = [1, 2, 3, 4, 5];
@@ -31,7 +33,7 @@ export const swapArrayItem = <T>(arr: T[], source: number, target: number): T[] 
 };
 
 export const randomIndex = (length: number): number => Math.floor(Math.random() * length);
-export const randomItem = <T>(arr: T[]): T => arr[randomIndex(arr.length)];
+export const randomItem = <T>(arr: T[]) => arr[randomIndex(arr.length)];
 export const randomItems = <T>(arr: T[], count: number): T[] => {
   const newArr = arr.slice();
   const result = [];
@@ -41,8 +43,9 @@ export const randomItems = <T>(arr: T[], count: number): T[] => {
   return result;
 };
 
-export const lastItem = <T>(arr: T[]): T => arr[arr.length - 1];
-export const firstItem = <T>(arr: T[]): T => arr[0];
+export const lastItem = <T>(arr: T[]): Undefinable<T> => arr[arr.length - 1];
+export const firstItem = <T>(arr: T[]): Undefinable<T> => arr[0];
+
 /**
  * fp
  * @param arr
