@@ -1,4 +1,4 @@
-import type { Dict, Falsy, Nil, NonUndefined, Primitive } from '../type/types';
+import type { Dict, NonUndefined, Primitive, Falsy, Nil } from '../type/types';
 
 type Type =
   | 'Number'
@@ -11,15 +11,6 @@ type Type =
   | 'Undefined'
   | 'Blob'
   | 'Date'
-  | 'Uint8Array'
-  | 'Uint8ClampedArray'
-  | 'Uint16Array'
-  | 'Uint32Array'
-  | 'Int8Array'
-  | 'Int16Array'
-  | 'Int32Array'
-  | 'Float32Array'
-  | 'Float64Array'
   | 'ArrayBuffer'
   | 'DataView'
   | 'RegExp'
@@ -29,18 +20,9 @@ type Type =
   | 'WeakSet'
   | 'Promise'
   | 'Generator'
-  | 'GeneratorFunction'
-  | 'GeneratorObject'
   | 'AsyncFunction'
-  | 'AsyncGenerator'
-  | 'AsyncGeneratorFunction'
-  | 'AsyncGeneratorObject'
   | 'Symbol'
-  | 'BigInt'
-  | 'BigInt64Array'
-  | 'BigUint64Array'
-  | 'ArrayBufferLike'
-  | 'ArrayLike';
+  | 'BigInt';
 
 export const getType = (value: any): Type => {
   return Object.prototype.toString.call(value).slice(8, -1) as Type;
@@ -68,17 +50,34 @@ export function isArrayLike<T>(value: any): value is ArrayLike<T> {
   );
 }
 
-export const isDefined = <T>(value: T): value is NonUndefined<T> => {
-  return typeof value !== 'undefined' && value !== undefined;
-};
+/**
+ * Asserts that the value is Falsy. `false`, `0`, `''`, `null`, `undefined`
+ * @param value
+ */
+export function isFalsy(value: any): value is Falsy {
+  return value === false || value === '' || value === 0 || value === null || value === undefined;
+}
 
+export function isNil(value: any): value is Nil {
+  return value === undefined || value === null;
+}
 export const isDefinedAndInitialize = <T>(value: T): value is NonNullable<T> => {
   return typeof value !== 'undefined' && value !== undefined && value !== null;
 };
 
-export const isUndefined = (value: any): value is undefined => {
+export const isNotNil = <T>(value: T) => isDefinedAndInitialize(value);
+
+export const isUndefined = <T>(value: T | undefined): value is undefined => {
   return typeof value === 'undefined' || value === undefined;
 };
+
+export const isDefined = <T>(value: T): value is NonUndefined<T> => {
+  return typeof value !== 'undefined' && value !== undefined;
+};
+
+export const isNull = (value: any): value is null => value === null;
+
+export const isNotNull = <T>(value: T): value is NonNullable<T> => value !== null;
 
 export const isEmptyArray = (value: any): value is [] =>
   isArray(value) && value.length === 0 && isUndefined(value[0]);
@@ -89,8 +88,6 @@ export const isEmptyArrayLike = <T>(value: any): value is ArrayLike<T> =>
 export function isFunction(value: any): value is Function {
   return typeof value === 'function';
 }
-
-export const isNull = (value: any): value is null => value === null;
 
 export const getPrototype = (value: object) => Object.getPrototypeOf(value);
 
@@ -210,19 +207,7 @@ export function isEmpty(value: any): boolean {
  * Asserts that the value is void. `undefined`, `null`
  */
 export function isVoid(value: any): value is void {
-  return value === undefined || value === null;
-}
-
-/**
- * Asserts that the value is Falsy. `false`, `0`, `''`, `null`, `undefined`
- * @param value
- */
-export function isFalsy(value: any): value is Falsy {
-  return value === false || value === '' || value === 0 || value === null || value === undefined;
-}
-
-export function isNil(value: any): value is Nil {
-  return value === undefined || value === null;
+  return value === undefined;
 }
 
 export const isDevProcess = process.env.NODE_ENV !== 'production';

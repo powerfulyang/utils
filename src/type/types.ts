@@ -15,7 +15,13 @@ export type Dict<T = any> = Record<string, T>;
 
 export type NonUndefined<T> = T extends undefined ? never : T;
 
+export type NonNil<T> = T extends null | undefined ? never : T;
+
 export type Undefinable<T> = T | undefined;
+
+export type Optional<T> = T | undefined;
+
+export type Nullable<T> = T | null;
 
 export type Primitive = string | number | boolean | symbol | bigint | null | undefined;
 

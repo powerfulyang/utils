@@ -318,7 +318,7 @@ describe('assertion', () => {
    */
   it('isVoid', () => {
     expect(isVoid(undefined)).toBe(true);
-    expect(isVoid(null)).toBe(true);
+    expect(isVoid(null)).toBe(false);
     expect(isVoid('')).toBe(false);
     expect(isVoid((() => {})())).toBe(true);
   });
