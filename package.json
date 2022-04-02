@@ -34,7 +34,7 @@
     "precommit": "npm run test && npm run tsc && lint-staged"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "0.7.13",
+    "@powerfulyang/lint": "0.7.14",
     "npm-run-all": "4.1.5"
   },
   "dependencies": {
