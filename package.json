@@ -31,15 +31,15 @@
     "tsc": "tsc --noEmit",
     "prepare": "husky install",
     "prepublishOnly": "npm run build",
-    "precommit": "npm run test && npm run lint:js && npm run prettier && npm run tsc"
+    "precommit": "npm run test && npm run tsc && lint-staged"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "^0.7.13",
-    "npm-run-all": "^4.1.5"
+    "@powerfulyang/lint": "0.7.13",
+    "npm-run-all": "4.1.5"
   },
   "dependencies": {
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.5.5",
-    "ts-toolbelt": "^9.6.0"
+    "reflect-metadata": "0.1.13",
+    "rxjs": "7.5.5",
+    "ts-toolbelt": "9.6.0"
   }
 }
