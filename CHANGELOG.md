@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.4.1](https://github.com/powerfulyang/utils/compare/v1.4.0...v1.4.1) (2022-04-29)
+
+
+### Bug Fixes
+
+* incorrect package.json fields ([daad5e8](https://github.com/powerfulyang/utils/commit/daad5e81da4016bc328bb8e6724167f4ffe2db94))
+
 ## [1.4.0](https://github.com/powerfulyang/utils/compare/v1.4.0...v1.4.0) (2022-04-29)
 
 
