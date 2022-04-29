@@ -1,11 +1,11 @@
-import type { ReturnTypedFunction, VoidFunction } from '../../util';
+import type { ReturnTypedFunction, VoidFunction } from '@/util';
 
-let counter = 0;
+const counter = 0;
 function getNewFunction(
   originalMethod: VoidFunction,
   hashFunction?: ReturnTypedFunction,
 ): ReturnTypedFunction {
-  const identifier = ++counter;
+  const identifier = counter + 1;
   // The function returned here gets called instead of originalMethod.
   return function Func(this: any, ...args: string[]) {
     const propValName = `__memoized_value_${identifier}`;

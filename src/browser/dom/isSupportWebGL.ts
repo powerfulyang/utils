@@ -5,8 +5,8 @@ export const isSupportWebGL: { (): boolean; value: null | boolean } = (): boolea
   try {
     const canvas = document.createElement('canvas');
     const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    isSupportWebGL.value = !!(gl && gl instanceof WebGLRenderingContext);
-    return isSupportWebGL.value;
+    isSupportWebGL.value = gl && gl instanceof WebGLRenderingContext;
+    return Boolean(isSupportWebGL.value);
   } catch {
     return false;
   }

@@ -1,4 +1,4 @@
-import { Collection, moveArrayItem, swapArrayItem } from './index';
+import { Collection, firstItem, lastItem, moveArrayItem, swapArrayItem } from './index';
 
 /**
  * jest, test collection util
@@ -37,5 +37,21 @@ describe('Collection', () => {
     const array = [{ a: 1 }, { a: 1, b: 2 }, { a: 2, b: 3 }, { a: 3, b: 4 }];
     const result = Collection.unique(array, 'a');
     expect(result).toEqual([{ a: 1 }, { a: 2, b: 3 }, { a: 3, b: 4 }]);
+  });
+
+  /**
+   * firstItem & lastItem
+   */
+  test('firstItem & lastItem', () => {
+    const array = [1, 2, 3, 4, 5];
+    const result = firstItem(array);
+    expect(result).toEqual(1);
+    const result2 = lastItem(array);
+    expect(result2).toEqual(5);
+    const emptyArray: any[] = [];
+    const result3 = firstItem(emptyArray);
+    expect(result3).toEqual(undefined);
+    const result4 = lastItem(emptyArray);
+    expect(result4).toEqual(undefined);
   });
 });

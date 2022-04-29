@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "module": "CommonJS",
+    "target": "ESNext",
+    "module": "ESNext",
     "sourceMap": true,
-    "outDir": "./dist/main",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -18,11 +17,15 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "baseUrl": "src",
-    "declaration": true,
+    "baseUrl": ".",
+    "declaration": false,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "useDefineForClassFields": false,
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
+  "include": ["./src/**/*.ts"]
 }

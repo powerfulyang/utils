@@ -1,1 +1,1 @@
-export * from './toLocaleString';
+export * from './toUpperCase';

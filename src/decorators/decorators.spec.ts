@@ -1,20 +1,16 @@
-import { Required, ToLocaleString, Validate } from './index';
+import { Required, ToUpperCase, Validate } from './index';
 
 /**
  * test decorators
  */
 describe('test decorators', () => {
   class TestClass {
-    @ToLocaleString()
-    public money: string | undefined;
+    @ToUpperCase()
+    public desc: string | undefined;
 
     @Validate()
     static testRequireParam(@Required() param: string) {
       return param;
-    }
-
-    getMoney() {
-      return this.money;
     }
   }
   /**
@@ -22,13 +18,13 @@ describe('test decorators', () => {
    */
   it('test Required', () => {
     const test = new TestClass();
-    test.money = '123133.22222';
-    expect(TestClass.testRequireParam('')).toBe('');
+    test.desc = 'description';
+    expect(TestClass.testRequireParam('param')).toBe('param');
     try {
-      TestClass.testRequireParam(undefined as any);
+      TestClass.testRequireParam(undefined as unknown as string);
     } catch (e) {
       expect((e as Error).message).toBe('Missing required parameter at index 0');
     }
-    expect(test.getMoney()).toBe('CN¥123,133.22');
+    expect(test.desc).toBe(test.desc.toUpperCase());
   });
 });

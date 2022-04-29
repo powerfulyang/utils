@@ -5,7 +5,7 @@ export const requiredMetadataKey = Symbol('required');
  * @constructor
  */
 export const Required = (): ParameterDecorator => (target, propertyKey, parameterIndex) => {
-  const existingRequiredParameters: number[] =
+  const existingRequiredParameters =
     Reflect.getOwnMetadata(requiredMetadataKey, target, propertyKey) || [];
   existingRequiredParameters.push(parameterIndex);
   Reflect.defineMetadata(requiredMetadataKey, existingRequiredParameters, target, propertyKey);

@@ -1,6 +1,6 @@
-import { isClient } from '../../util';
+import { isClient } from '@/util';
 
-let result: boolean = true;
+let result = true;
 
 const kTestImages = {
   lossy: 'UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA',
@@ -32,4 +32,4 @@ if (isClient) {
   });
 }
 
-export const isSupportWebp = (): boolean => result;
+export const isSupportWebp = () => result;

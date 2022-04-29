@@ -1,5 +1,7 @@
+import { isBlob } from '@/util';
+
 export const copyToClipBoard = (state: string | Blob) => {
-  if (state instanceof Blob) {
+  if (isBlob(state)) {
     const item = new ClipboardItem({
       [state.type]: state,
     });

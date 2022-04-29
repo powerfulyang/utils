@@ -1,4 +1,4 @@
-import type { Undefinable } from '../type/types';
+import type { Undefinable } from '@/util';
 
 /**
  * fp
@@ -37,7 +37,7 @@ export const randomItem = <T>(arr: T[]) => arr[randomIndex(arr.length)];
 export const randomItems = <T>(arr: T[], count: number): T[] => {
   const newArr = arr.slice();
   const result = [];
-  for (let i = 0; i < count; i++) {
+  for (let i = 0; i < count; i += 1) {
     result.push(randomItem(newArr));
   }
   return result;

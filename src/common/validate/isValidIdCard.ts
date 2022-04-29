@@ -44,17 +44,22 @@ export const isValidIdCard = (sId: string): boolean => {
     82: '澳门',
     91: '国外',
   };
-  const provinceNo = parseInt(sId.substr(0, 2), 10);
-  if (!Reflect.get(aCity, provinceNo)) {
+  const provinceNo = parseInt(sId.substring(0, 2), 10);
+  if (!Reflect.has(aCity, provinceNo)) {
     return false;
   }
 
   // 出生日期验证
-  const sBirthday = `${sId.substr(6, 4)}-${Number(sId.substr(10, 2))}-${Number(
-    sId.substr(12, 2),
-  )}`.replace(/-/g, '/');
-  const d = new Date(sBirthday);
-  if (sBirthday !== `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`) {
+  const year = parseInt(sId.substring(6, 10), 10);
+  if (year < 1900 || year > new Date().getFullYear()) {
+    return false;
+  }
+  const month = parseInt(sId.substring(10, 12), 10);
+  if (month < 1 || month > 12) {
+    return false;
+  }
+  const day = parseInt(sId.substring(12, 14), 10);
+  if (day < 1 || day > 31) {
     return false;
   }
 
@@ -62,7 +67,7 @@ export const isValidIdCard = (sId: string): boolean => {
   let sum = 0;
   const weights = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
   const codes = '10X98765432';
-  for (let i = 0; i < sId.length - 1; i++) {
+  for (let i = 0; i < sId.length - 1; i += 1) {
     sum += Number(sId[i]) * weights[i];
   }
   const last = codes[sum % 11]; // 计算出来的最后一位身份证号码

@@ -1,5 +1,5 @@
+import { isUndefined } from '@/util';
 import { requiredMetadataKey } from '../parameter';
-import { isUndefined } from '../../util';
 
 export const Validate =
   (): MethodDecorator => (target, propertyName, descriptor: TypedPropertyDescriptor<any>) => {

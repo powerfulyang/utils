@@ -1,6 +1,3 @@
-/**
- * do a test for assertion.ts
- */
 import {
   getInstanceType,
   getType,
@@ -20,7 +17,7 @@ import {
   isString,
   isUndefined,
   isVoid,
-} from './assertion';
+} from '@/util';
 
 describe('assertion', () => {
   class Test {}

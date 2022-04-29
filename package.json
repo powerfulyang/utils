@@ -4,10 +4,19 @@
   "description": "common utils",
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
+  "sideEffects": false,
   "author": {
     "name": "powerfulyang"
   },
-  "repository": "https://github.com/powerfulyang/tools",
+  "homepage": "https://github.com/powerfulyang/utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/powerfulyang/utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/powerfulyang/utils/issues",
+    "email": "i@powerfulyang.com"
+  },
   "license": "MIT",
   "keywords": [
     "utils"
@@ -20,26 +29,36 @@
     "last 2 versions"
   ],
   "scripts": {
-    "patch-version": "npm version patch --no-git-tag-version",
-    "build": "rimraf dist && run-p build:*",
-    "build:main": "tsc -p tsconfig.json",
-    "build:module": "tsc -p tsconfig.module.json",
-    "watch:build": "rimraf dist && tsc -p tsconfig.json --watch",
-    "prettier": "prettier \"src/**/*.{ts,tsx,scss,json,js}\" --write",
-    "lint:js": "eslint --ext .ts,.tsx  ./src --fix",
+    "prebuild": "rimraf dist",
+    "build": "run-p build:*",
+    "build:source": "rollup -c",
+    "build:types": "tsc -p tsconfig.types.json",
+    "prettier": "prettier \"src/**/*.ts\" --write",
+    "lint:js": "eslint --ext .ts ./src --fix",
     "test": "jest",
-    "tsc": "tsc --noEmit",
-    "prepare": "husky install",
+    "tsc-check": "tsc --noEmit",
+    "postprepare": "husky install",
     "prepublishOnly": "npm run build",
-    "precommit": "npm run test && npm run tsc && lint-staged"
+    "precommit": "npm run test && npm run tsc-check && lint-staged"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "0.7.14",
-    "npm-run-all": "4.1.5"
-  },
-  "dependencies": {
+    "@powerfulyang/lint": "1.4.7",
+    "@rollup/plugin-typescript": "8.3.2",
     "reflect-metadata": "0.1.13",
+    "rollup": "2.70.2",
     "rxjs": "7.5.5",
-    "ts-toolbelt": "9.6.0"
+    "tsconfig-paths-jest": "0.0.1"
+  },
+  "peerDependencies": {
+    "reflect-metadata": ">=0.1.13",
+    "rxjs": ">=7.5.5"
+  },
+  "peerDependenciesMeta": {
+    "reflect-metadata": {
+      "optional": true
+    },
+    "rxjs": {
+      "optional": true
+    }
   }
 }
