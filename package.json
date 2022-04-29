@@ -6,7 +6,9 @@
   "module": "dist/module/index.js",
   "sideEffects": false,
   "author": {
-    "name": "powerfulyang"
+    "name": "powerfulyang",
+    "email": "i@powerfulyang.com",
+    "url": "https://powerfulyang.com"
   },
   "homepage": "https://github.com/powerfulyang/utils#readme",
   "repository": {
