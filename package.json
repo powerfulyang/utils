@@ -52,7 +52,7 @@
     "precommit": "npm run test && npm run tsc-check && lint-staged"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "1.4.7",
+    "@powerfulyang/lint": "1.4.8",
     "@rollup/plugin-typescript": "8.3.2",
     "reflect-metadata": "0.1.13",
     "rollup": "2.70.2",
