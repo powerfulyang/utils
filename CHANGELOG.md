@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.4.2](https://github.com/powerfulyang/utils/compare/v1.4.1...v1.4.2) (2022-04-30)
+
+
+### Bug Fixes
+
+* reflect-metadata shouldn't import in index.ts ([a80edd1](https://github.com/powerfulyang/utils/commit/a80edd18b76047f8bdb6580ff9e0b2771111fbc8))
+
 ### [1.4.1](https://github.com/powerfulyang/utils/compare/v1.4.0...v1.4.1) (2022-04-29)
 
 
