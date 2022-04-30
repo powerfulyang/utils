@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { toUpperCase } from '@/format';
 
 const symbol = Symbol('ToLocaleString');

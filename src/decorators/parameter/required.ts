@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 export const requiredMetadataKey = Symbol('required');
 /**
  * Decorator: Indicates that a parameter is required.

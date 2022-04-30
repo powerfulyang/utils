@@ -1,8 +1,8 @@
-import type { ReturnTypedFunction, VoidFunction } from '@/util';
+import type { ReturnTypedFunction } from '@/util';
 
 const counter = 0;
 function getNewFunction(
-  originalMethod: VoidFunction,
+  originalMethod: ReturnTypedFunction,
   hashFunction?: ReturnTypedFunction,
 ): ReturnTypedFunction {
   const identifier = counter + 1;
