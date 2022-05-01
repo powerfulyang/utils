@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.4.4](https://github.com/powerfulyang/utils/compare/v1.4.3...v1.4.4) (2022-05-01)
+
+
+### Bug Fixes
+
+* **package.json:** typo ([2662afa](https://github.com/powerfulyang/utils/commit/2662afa9d399db04d225d1b19fb9851fcc4a91ad))
+
 ### [1.4.3](https://github.com/powerfulyang/utils/compare/v1.4.2...v1.4.3) (2022-05-01)
 
 
