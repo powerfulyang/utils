@@ -20,10 +20,10 @@ const config = {
     {
       sourcemap: true,
       entryFileNames: '[name].mjs',
-      format: 'esm',
+      format: 'es',
       exports: 'named',
       preserveModules: true,
-      dir: 'dist/esm',
+      dir: 'dist/es',
     },
   ],
   plugins: [typescript()],
