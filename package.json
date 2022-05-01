@@ -3,12 +3,12 @@
   "version": "1.4.2",
   "description": "common utils",
   "main": "dist/cjs/index.cjs",
-  "module": "dist/es/index.mjs",
+  "module": "dist/esm/index.mjs",
   "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/es/index.mjs",
-      "require": "./dist/es/index.mjs",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/esm/index.mjs",
       "types": "./dist/types/index.d.ts"
     }
   },
@@ -42,7 +42,7 @@
     "prebuild": "rimraf dist",
     "build": "run-p build:*",
     "build:source": "rollup -c",
-    "build:types": "tsc -p tsconfig.types.json",
+    "build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json",
     "prettier": "prettier \"src/**/*.ts\" --write",
     "lint:js": "eslint --ext .ts ./src --fix",
     "test": "jest",
@@ -52,20 +52,11 @@
     "precommit": "npm run test && npm run tsc-check && lint-staged"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "1.4.12",
-    "@rollup/plugin-typescript": "8.3.2",
-    "tsconfig-paths-jest": "0.0.1"
+    "@powerfulyang/lint": "1.6.1",
+    "@rollup/plugin-typescript": "8.3.2"
   },
   "peerDependencies": {
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5"
-  },
-  "peerDependenciesMeta": {
-    "reflect-metadata": {
-      "optional": true
-    },
-    "rxjs": {
-      "optional": true
-    }
   }
 }

@@ -3,7 +3,10 @@ import pkg from './package.json';
 
 const pkgDeps = Array.from(Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies }));
 
-export default {
+/**
+ * @type {import('rollup').RollupOptions}
+ */
+const config = {
   input: 'src/index.ts',
   output: [
     {
@@ -17,12 +20,14 @@ export default {
     {
       sourcemap: true,
       entryFileNames: '[name].mjs',
-      format: 'es',
+      format: 'esm',
       exports: 'named',
       preserveModules: true,
-      dir: 'dist/es',
+      dir: 'dist/esm',
     },
   ],
   plugins: [typescript()],
   external: [...pkgDeps],
 };
+
+export default config;

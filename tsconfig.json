@@ -23,7 +23,7 @@
     "strict": true,
     "useDefineForClassFields": false,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "exclude": ["node_modules"],
