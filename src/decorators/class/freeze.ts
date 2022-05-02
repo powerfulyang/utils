@@ -6,13 +6,6 @@ export const Freeze =
     class extends constructor {
       constructor(...rest: any[]) {
         super(...rest);
-        Reflect.ownKeys(this).forEach((item) => {
-          const val = Reflect.get(this, item);
-          Reflect.defineProperty(this, item, {
-            set: () => {},
-            get: () => val,
-          });
-        });
-        Reflect.preventExtensions(this);
+        Object.freeze(this);
       }
     };

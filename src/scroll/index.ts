@@ -6,10 +6,12 @@ export const scrollIntoView = (
   callback?: VoidFunction | undefined,
 ) => {
   element?.scrollIntoView(options);
-  const subscription = fromEvent(window, 'scroll')
-    .pipe(startWith(0), debounceTime(100))
-    .subscribe(() => {
-      subscription.unsubscribe();
-      callback?.();
-    });
+  if (callback) {
+    const subscription = fromEvent(window, 'scroll')
+      .pipe(startWith(0), debounceTime(100))
+      .subscribe(() => {
+        subscription.unsubscribe();
+        callback();
+      });
+  }
 };

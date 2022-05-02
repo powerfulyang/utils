@@ -5,5 +5,4 @@ export * from './decorators';
 export * from './collection';
 export * from './enum';
 export * from './blob';
-export * from './format';
 export * from './scroll';

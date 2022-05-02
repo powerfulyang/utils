@@ -61,6 +61,7 @@ export function isFalsy(value: any): value is Falsy {
 export function isNil(value: any): value is Nil {
   return value === undefined || value === null;
 }
+
 export const isDefinedAndInitialize = <T>(value: T): value is NonNullable<T> => {
   return typeof value !== 'undefined' && value !== undefined && value !== null;
 };

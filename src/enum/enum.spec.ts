@@ -1,8 +1,8 @@
+import { getEnumKeys, getEnumValues } from './index';
+
 /**
  * test enum
  */
-import { getEnumKeys, getEnumValues } from './index';
-
 enum TestEnum {
   /**
    * test enum value
