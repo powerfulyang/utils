@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@powerfulyang/lint": "1.6.1",
-    "@rollup/plugin-typescript": "8.3.2"
+    "@rollup/plugin-typescript": "8.3.3"
   },
   "peerDependencies": {
     "reflect-metadata": "^0.1.13",
