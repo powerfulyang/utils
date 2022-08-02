@@ -2,18 +2,20 @@ import {
   getInstanceType,
   getType,
   isArray,
-  isArrayLike,
   isBlob,
   isDefined,
   isEmpty,
   isEmptyArray,
-  isEmptyObject,
+  isFalsy,
   isFunction,
+  isNil,
+  isNotNil,
+  isNotNull,
   isNumber,
   isNumeric,
   isObject,
   isPlainObject,
-  isPrimitiveValuePlainObject,
+  isPrimitive,
   isString,
   isUndefined,
   isVoid,
@@ -65,6 +67,8 @@ describe('assertion', () => {
     expect(isNumeric('0.0.1')).toBe(false);
     expect(isNumeric('0.0')).toBe(true);
     expect(isNumeric('--0.0')).toBe(false);
+    expect(isNumeric('-0.0')).toBe(true);
+    expect(isNumeric('1e2')).toBe(true);
     expect(isNumeric(0)).toBe(true);
     expect(isNumeric(Number.MAX_VALUE)).toBe(true);
     expect(isNumeric(Number.POSITIVE_INFINITY)).toBe(false);
@@ -103,6 +107,8 @@ describe('assertion', () => {
   it('getType', () => {
     expect(getType(undefined)).toBe('Undefined');
     expect(getType(null)).toBe('Null');
+    // Object.create(null) 特殊的对象，它的原型是 null
+    expect(getType(Object.create(null))).toBe('Object');
     expect(getType('')).toBe('String');
     expect(getType(Symbol('test'))).toBe('Symbol');
     expect(getType(0)).toBe('Number');
@@ -208,22 +214,12 @@ describe('assertion', () => {
     const formData = new FormData();
     expect(isPlainObject(formData)).toBe(false);
     expect(isPlainObject([])).toBe(false);
-    expect(isEmptyObject({})).toBe(true);
-    expect(isEmptyObject({ a: 1 })).toBe(false);
-    expect(isEmptyObject(0)).toBe(false);
     expect(isPlainObject([])).toBe(false);
     expect(isPlainObject(() => {})).toBe(false);
     expect(isPlainObject(Test)).toBe(false);
     expect(isPlainObject(t)).toBe(false);
     expect(isPlainObject(Buffer.from(''))).toBe(false);
     expect(isPlainObject(Buffer)).toBe(false);
-
-    const obj = {} as { a: 1 } | { a: 1; b: () => void };
-    if (isPrimitiveValuePlainObject(obj)) {
-      obj.a;
-    } else {
-      obj.b();
-    }
   });
 
   /**
@@ -271,8 +267,10 @@ describe('assertion', () => {
     expect(isEmpty(0)).toBe(true);
     expect(isEmpty({})).toBe(true);
     expect(isEmpty([])).toBe(true);
-    expect(isEmpty(() => {})).toBe(true);
-    expect(isEmpty(Test)).toBe(true);
+    expect(isEmpty(() => {})).toBe(false);
+    expect(isEmpty(Test)).toBe(false);
+    expect(getType(t)).toBe('Object');
+    expect(getInstanceType(t)).toBe('Test');
     expect(isEmpty(t)).toBe(true);
     const arrayLike = {
       length: 0,
@@ -281,8 +279,6 @@ describe('assertion', () => {
     expect(isArray(arrayLike)).toBe(false);
     const arr = [1, { a: 1 }];
     expect(isArray(arr)).toBe(true);
-    expect(isArrayLike(arr)).toBe(true);
-    expect(isArrayLike(arrayLike)).toBe(true);
     expect(isEmpty(arrayLike)).toBe(false);
     const buffer = Buffer.from('');
     expect(isEmpty(buffer)).toBe(true);
@@ -318,5 +314,20 @@ describe('assertion', () => {
     expect(isVoid(null)).toBe(false);
     expect(isVoid('')).toBe(false);
     expect(isVoid((() => {})())).toBe(true);
+  });
+
+  it('others', () => {
+    expect(isFalsy(undefined)).toBe(true);
+    expect(isNil(undefined)).toBe(true);
+    expect(isNotNil(undefined)).toBe(false);
+    expect(isNotNull(undefined)).toBe(true);
+    // isPrimitive
+    expect(isPrimitive(undefined)).toBe(true);
+    expect(isPrimitive(null)).toBe(true);
+    expect(isPrimitive('')).toBe(true);
+    expect(isPrimitive(false)).toBe(true);
+    expect(isPrimitive(0)).toBe(true);
+    expect(isPrimitive(10n)).toBe(true);
+    expect(isPrimitive(Symbol(''))).toBe(true);
   });
 });

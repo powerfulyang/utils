@@ -1,36 +1,54 @@
 /**
- * P parameters type; R return type;
+ * @description
+ * <P> parameters type;
+ *
+ * <R> return type;
  */
-export type ReturnTypedFunction<R = any, P extends unknown[] = any[]> = (...args: P) => R;
+export type ReturnFunction<R = any, P extends unknown[] = any[]> = (...args: P) => R;
+
 /**
- * P constructor parameters type; I instance type;
+ * @description
+ * <P> parameters type;
+ */
+export type VoidFunction<P extends unknown[] = any[]> = ReturnFunction<void, P>;
+
+/**
+ * @description
+ * <P> constructor parameters type;
+ *
+ * <I> instance type;
  */
 export type ConstructorFunction<I = any, P extends unknown[] = any[]> = new (...args: P) => I;
-/**
- * P parameters type;
- */
-export type VoidFunction<P extends unknown[] = any[]> = ReturnTypedFunction<void, P>;
 
+/**
+ * @description
+ * 普通对象
+ */
 export type Dict<T = any> = Record<string, T>;
 
-export type NonUndefined<T> = T extends undefined ? never : T;
+/**
+ * @description
+ * Asserts that the value is Nil.
+ *
+ * `null` or `undefined`
+ */
+export type Nil = undefined | null;
 
-export type NonNil<T> = T extends null | undefined ? never : T;
+export type NonUndefined<T> = Exclude<T, undefined>;
+
+export type NonNil<T> = T extends Nil ? never : T;
+
+export type NonNull<T> = T extends null ? never : T;
 
 export type Undefinable<T> = T | undefined;
 
-export type Optional<T> = T | undefined;
+export type Optional<T> = Undefinable<T>;
 
 export type Nullable<T> = T | null;
 
 export type Primitive = string | number | boolean | symbol | bigint | null | undefined;
 
 export type Falsy = false | '' | 0 | null | undefined;
-
-/**
- * Asserts that the value is Nil. `null`, `undefined`
- */
-export type Nil = undefined | null;
 
 /**
  * FunctionKeys

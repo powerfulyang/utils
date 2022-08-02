@@ -1,10 +1,10 @@
-import type { ReturnTypedFunction } from '@/util';
+import type { ReturnFunction } from '@/util';
 
 const counter = 0;
 function getNewFunction(
-  originalMethod: ReturnTypedFunction,
-  hashFunction?: ReturnTypedFunction,
-): ReturnTypedFunction {
+  originalMethod: ReturnFunction,
+  hashFunction?: ReturnFunction,
+): ReturnFunction {
   const identifier = counter + 1;
   // The function returned here gets called instead of originalMethod.
   return function Func(this: any, ...args: string[]) {
@@ -53,7 +53,7 @@ function getNewFunction(
 }
 
 export const Memoize =
-  (hashFunction?: ReturnTypedFunction): MethodDecorator =>
+  (hashFunction?: ReturnFunction): MethodDecorator =>
   (_target: Object, _propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
     if (descriptor.value != null) {
       Reflect.set(descriptor, 'value', getNewFunction(descriptor.value, hashFunction));
