@@ -47,7 +47,7 @@
     "lint:js": "eslint --ext .ts ./src --fix",
     "test": "jest",
     "tsc-check": "tsc --noEmit",
-    "postprepare": "husky install && install-peers",
+    "postprepare": "husky install",
     "prepublishOnly": "npm run build",
     "precommit": "npm run test && npm run tsc-check && lint-staged"
   },
