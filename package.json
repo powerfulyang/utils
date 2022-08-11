@@ -39,6 +39,7 @@
     "last 2 versions"
   ],
   "scripts": {
+    "bootstrap": "pnpm install --shamefully-hoist",
     "prebuild": "rimraf dist",
     "build": "run-p build:*",
     "build:source": "rollup -c",
