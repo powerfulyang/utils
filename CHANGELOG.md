@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.5.0](https://github.com/powerfulyang/utils/compare/v1.4.4...v1.5.0) (2022-09-06)
+
+
+### Features
+
+* @powerfulyang/lint@3.1.0 ([cecf279](https://github.com/powerfulyang/utils/commit/cecf2797d0018fa4f0d1df7566bdcc9f4d102ca5))
+* pnpm ([ddd9446](https://github.com/powerfulyang/utils/commit/ddd94462b5ef9e64e6662192c33362b1896e9e68))
+* typescript explicitly ([9ec03a1](https://github.com/powerfulyang/utils/commit/9ec03a16b33adb64607fc4ee4006cfa56b882cd9))
+* 垃圾 javascript ([ebe1ccd](https://github.com/powerfulyang/utils/commit/ebe1ccd4ca318a3d48bbe0eba2b45caa718f2c07))
+
+
+### Bug Fixes
+
+* copyToClipBoard 修改 ([b18254e](https://github.com/powerfulyang/utils/commit/b18254e2d1e18b9b15a5f430524964c52d9a4926))
+
 ### [1.4.4](https://github.com/powerfulyang/utils/compare/v1.4.3...v1.4.4) (2022-05-01)
 
 
