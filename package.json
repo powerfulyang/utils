@@ -39,7 +39,6 @@
     "last 2 versions"
   ],
   "scripts": {
-    "bootstrap": "pnpm install --shamefully-hoist",
     "prebuild": "rimraf dist",
     "build": "run-p build:*",
     "build:source": "rollup -c",
@@ -53,12 +52,12 @@
     "precommit": "npm run test && npm run tsc-check && lint-staged"
   },
   "devDependencies": {
-    "@powerfulyang/lint": "2.0.2",
+    "@powerfulyang/lint": "3.1.0",
     "@rollup/plugin-typescript": "8.5.0",
     "typescript": "latest"
   },
   "peerDependencies": {
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.5.6"
+    "reflect-metadata": "*",
+    "rxjs": "*"
   }
 }
