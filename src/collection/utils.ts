@@ -1,4 +1,4 @@
-import type { Dict, Primitive } from '@/util';
+import type { Dict, Primitive } from '@/utils';
 
 export class Collection {
   static unique<T extends Primitive>(array: T[]): T[];

@@ -14,4 +14,5 @@ module.exports = {
     '^.+\\.(ts|tsx)$': '@swc/jest',
   },
   testTimeout: 10000,
+  testEnvironment: 'jsdom',
 };

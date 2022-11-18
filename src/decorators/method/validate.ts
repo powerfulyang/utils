@@ -1,4 +1,4 @@
-import { isUndefined } from '@/util';
+import { isUndefined } from '@/utils';
 import 'reflect-metadata';
 import { requiredMetadataKey } from '../parameter';
 

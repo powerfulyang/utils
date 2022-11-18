@@ -1,4 +1,4 @@
-import type { ReturnFunction } from '@/util';
+import type { ReturnFunction } from '@/utils';
 
 const counter = 0;
 function getNewFunction(

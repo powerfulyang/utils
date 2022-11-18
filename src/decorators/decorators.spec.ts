@@ -41,14 +41,14 @@ describe('test decorators', () => {
     expect(Object.isExtensible(freezeTestClass)).toBe(false);
     expect(() => {
       delete freezeTestClass.property;
-    }).toThrow("Cannot delete property 'property' of [object Object]");
+    }).toThrow(/^Cannot delete property 'property'/);
     expect(() => {
       // @ts-ignore
       freezeTestClass.newProperty = 'test';
     }).toThrow('Cannot add property newProperty, object is not extensible');
     expect(() => {
       freezeTestClass.property = 'test';
-    }).toThrow("Cannot assign to read only property 'property' of object '[object Object]'");
+    }).toThrow(/^Cannot assign to read only property 'property' of object/);
     expect(
       Reflect.defineProperty(freezeTestClass, 'property', {
         value: 'test2',

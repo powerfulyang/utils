@@ -1,6 +1,6 @@
 export * from './browser';
 export * from './common';
-export * from './util';
+export * from './utils';
 export * from './decorators';
 export * from './collection';
 export * from './enum';

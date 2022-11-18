@@ -1,4 +1,4 @@
-import { isClient } from '@/util';
+import { isClient } from '@/utils';
 
 let result = true;
 

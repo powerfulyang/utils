@@ -1,7 +1,7 @@
 import { Collection, firstItem, lastItem, moveArrayItem, swapArrayItem } from './index';
 
 /**
- * jest, test collection util
+ * jest, test collection utils
  */
 describe('Collection', () => {
   /**

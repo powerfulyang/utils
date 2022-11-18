@@ -1,4 +1,4 @@
-import type { Undefinable } from '@/util';
+import type { Undefinable } from '@/utils';
 
 /**
  * fp
