@@ -54,9 +54,12 @@
   "devDependencies": {
     "@powerfulyang/lint": "latest",
     "@rollup/plugin-typescript": "8.5.0",
+    "canvas": "2.10.2",
+    "open": "8.4.0",
     "typescript": "latest"
   },
   "peerDependencies": {
+    "qrcode-generator": "*",
     "reflect-metadata": "*",
     "rxjs": "*"
   }
