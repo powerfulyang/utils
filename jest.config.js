@@ -15,4 +15,7 @@ module.exports = {
   },
   testTimeout: 10000,
   testEnvironment: 'jsdom',
+  testEnvironmentOptions: {
+    resources: 'usable',
+  },
 };
