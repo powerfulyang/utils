@@ -6,8 +6,11 @@ const convertToPng = (blob: Blob) => {
       img.onload = () => {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d')!;
-        canvas.width = img.width;
-        canvas.height = img.height;
+        const devicePixelRatio = window.devicePixelRatio || 1;
+        canvas.width = img.width * devicePixelRatio;
+        canvas.height = img.height * devicePixelRatio;
+        canvas.style.width = `${img.width}px`;
+        canvas.style.height = `${img.height}px`;
         ctx.drawImage(img, 0, 0);
         canvas.toBlob((res) => {
           if (res) {
