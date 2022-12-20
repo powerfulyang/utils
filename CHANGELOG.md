@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.6.0](https://github.com/powerfulyang/utils/compare/v1.5.0...v1.6.0) (2022-12-20)
+
+
+### Features
+
+* qrcode ([6a71054](https://github.com/powerfulyang/utils/commit/6a7105484774160e8da11050772da3fcdf91886c))
+
+
+### Bug Fixes
+
+* forgot devicePixelRatio ([274cbd1](https://github.com/powerfulyang/utils/commit/274cbd1ea791ace5e59a95fc01e8d5cdb52e37d9))
+* swc didn't compile optional chaining usage in node_modules ([c051f54](https://github.com/powerfulyang/utils/commit/c051f54739162f67d10f74e7049f0d31b0b71045))
+
 ## [1.5.0](https://github.com/powerfulyang/utils/compare/v1.4.4...v1.5.0) (2022-09-06)
 
 
