@@ -18,4 +18,5 @@ module.exports = {
   testEnvironmentOptions: {
     resources: 'usable',
   },
+  forceExit: true,
 };

@@ -26,7 +26,11 @@ const config = {
       dir: 'dist/es',
     },
   ],
-  plugins: [typescript()],
+  plugins: [
+    typescript({
+      tsconfig: 'tsconfig.build.json',
+    }),
+  ],
   external: [...pkgDeps],
 };
 
