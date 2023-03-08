@@ -1,4 +1,4 @@
-import type { Dict, NonUndefined, Primitive, Falsy, Nil } from '@/utils';
+import type { Dict, Falsy, Nil, NonUndefined, Primitive } from '@/utils';
 
 type Type =
   | 'Number'
@@ -25,137 +25,156 @@ type Type =
   | 'BigInt'
   | string;
 
+/**
+ * @description 获取类型
+ * @param value any
+ * @example
+ * getType(1) === 'Number'
+ * getType('1') === 'String'
+ * getType(true) === 'Boolean'
+ * getType([]) === 'Array'
+ * getType({}) === 'Object'
+ * getType(() => {}) === 'Function'
+ * getType(null) === 'Null'
+ * getType(undefined) === 'Undefined'
+ * getType(new Blob()) === 'Blob'
+ * getType(new Date()) === 'Date'
+ */
 export const getType = (value: any): Type => {
   return Object.prototype.toString.call(value).slice(8, -1) as Type;
 };
 
 /**
- * @description
- * Infinity、NaN 为 false
- *
- * 0、Number.MAX_VALUE、Number.MIN_VALUE 为 true
+ * @description Infinity、NaN 为 false
+ * @description 0、Number.MAX_VALUE、Number.MIN_VALUE 为 true
  */
 export function isNumber(value: any): value is number {
   return getType(value) === 'Number' && !Number.isNaN(value) && Number.isFinite(value);
 }
 
 /**
- * @description
- * Infinity、NaN 为 false
- *
- * '+1.2'、'-0.0'、'1e2' 为 true
+ * @description Infinity、NaN 为 false
+ * @description '+1.2'、'-0.0'、'1e2' 为 true
  */
 export function isNumeric(value: any) {
   return value != null && value - parseFloat(value) + 1 >= 0;
 }
 
 /**
- * @description
- * 是否为数组
+ * @description 是否为数组
  */
 export function isArray<T>(value: any): value is Array<T> {
   return Array.isArray(value);
 }
 
 /**
- * @description
- * Asserts that the value is Falsy.
- *
- * `false`, `0`, `''`, `null`, `undefined`
+ * @description Asserts that the value is Falsy.
+ * @example `false`, `0`, `''`, `null`, `undefined`
  */
 export function isFalsy(value: any): value is Falsy {
   return value === false || value === '' || value === 0 || value === null || value === undefined;
 }
 
 /**
- * @description
- * Asserts that the value is Nil. `null`, `undefined`
+ * @description Asserts that the value is Nil. `null`, `undefined`
+ * @example `null`, `undefined`
  */
 export function isNil(value: any): value is Nil {
   return value === undefined || value === null;
 }
 
 /**
- * @description
- * Asserts that the value is not `undefined` or `null`
+ * @description Asserts that the value is not `undefined` or `null`
  */
 export const isDefinedAndInitialize = <T>(value: T | undefined | null): value is T => {
   return typeof value !== 'undefined' && value !== undefined && value !== null;
 };
 
 /**
- * @description
- * Asserts that the value is not `undefined` or `null`
+ * @description Asserts that the value is not `undefined` or `null`
  */
 export const isNotNil = <T>(value: T | undefined | null): value is T => {
   return isDefinedAndInitialize(value);
 };
 
 /**
- * @description
- * Asserts that the value is undefined
+ * @description Asserts that the value is undefined
  */
 export const isUndefined = <T>(value: T | undefined): value is undefined => {
   return typeof value === 'undefined' || value === undefined;
 };
 
 /**
- * @description
- * Asserts that the value is not undefined
+ * @description Asserts that the value is not undefined
  */
 export const isDefined = <T>(value: T): value is NonUndefined<T> => {
   return typeof value !== 'undefined' && value !== undefined;
 };
 
 /**
- * @description
- * Asserts that the value is null
+ * @description Asserts that the value is null
  */
 export const isNull = (value: any): value is null => value === null;
 
 /**
- * @description
- * Asserts that the value is not null
+ * @description Asserts that the value is not null
  */
 export const isNotNull = <T>(value: T): value is NonNullable<T> => value !== null;
 
 /**
- * @description
- * Asserts that the value is []
+ * @description Asserts that the value is []
  */
 export const isEmptyArray = (value: any): value is [] =>
   isArray(value) && value.length === 0 && isUndefined(value[0]);
 
 /**
- * @description
- * Asserts that the value is Function
+ * @description Asserts that the value is Function
  */
 export function isFunction(value: any): value is Function {
   return typeof value === 'function';
 }
 
 /**
- * @description
- * 获取原型信息
+ * @description 获取原型
+ * @example
+ * const a = { a: 1 };
+ * const b = Object.create(a);
+ * const c = Object.create(b);
+ * getPrototype(c) === b;
+ * getPrototype(b) === a;
+ * getPrototype(a) === Object.prototype;
+ * getPrototype(Object.prototype) === null;
  */
-export const getPrototype = (value: object) => Object.getPrototypeOf(value);
+export const getPrototype = (value: any) => Object.getPrototypeOf(value);
 
 /**
- * @description
- * 获取原型信息
+ * @description 获取实例类型
+ * @example
+ * const a = { a: 1 };
+ * const b = Object.create(a);
+ * const c = Object.create(b);
+ * getInstanceType(c) === 'Object';
+ * getInstanceType(b) === 'Object';
+ * getInstanceType(a) === 'Object';
+ * getInstanceType(Object.prototype) === 'Object';
+ * getInstanceType(Object) === 'Function';
+ * getInstanceType(Function) === 'Function';
  */
 export const getInstanceType = (value: any) => {
   const type = getType(value);
-  return type === 'Object' ? getPrototype(value).constructor.name : type;
+  if (type === 'Object') {
+    if (getPrototype(value)) {
+      return getPrototype(value).constructor.name;
+    }
+    return getPrototype(value);
+  }
+  return type;
 };
 
 /**
- * @description
- * Check if the value is Object
- *
- * object、function 类型为 true
- *
- * Primitive 类型为 false
+ * @description Check if the value is Object
+ * @description object、function 类型为 true
+ * @description Primitive 类型为 false
  */
 export const isObject = (value: any): value is object => {
   const type = getType(value);
@@ -258,7 +277,6 @@ export const isEmptyBuffer = (value: any): value is Buffer => {
  *  isEmpty(new Set()) // true
  *  isEmpty(new Map()) // true
  *  isEmpty(function(){}) // false
- *  isEmpty(new Buffer()) // true
  */
 export function isEmpty(value: any): boolean {
   return (
@@ -270,14 +288,12 @@ export function isEmpty(value: any): boolean {
     isEmptyBlob(value) ||
     isEmptySet(value) ||
     isEmptyMap(value) ||
-    isEmptyObject(value) ||
-    isEmptyBuffer(value)
+    isEmptyObject(value)
   );
 }
 
 /**
- * @description
- * Asserts that the value is void. `undefined`, `null`
+ * @description Asserts that the value is void. `undefined`, `null`
  */
 export function isVoid(value: any): value is void {
   return value === undefined;
@@ -287,3 +303,4 @@ export const isDevProcess = process.env.NODE_ENV !== 'production';
 export const isProdProcess = process.env.NODE_ENV === 'production';
 export const isTestProcess = process.env.NODE_ENV === 'test';
 export const isClient = typeof window === 'object';
+export const isServer = typeof window === 'undefined';

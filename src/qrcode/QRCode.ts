@@ -77,7 +77,7 @@ export class QRCode {
   }
 
   async renderCanvas<T extends Canvas>(data: string, canvas: T) {
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d') as unknown as CanvasRenderingContext2D;
     if (!ctx) {
       throw new Error('No canvas context');
     }

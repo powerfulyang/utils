@@ -2,9 +2,7 @@ import { QRCode } from '@/qrcode/QRCode';
 import type { CanvasRenderingContext2D } from 'canvas';
 import { Canvas, loadImage } from 'canvas';
 import open from 'open';
-import * as fs from 'fs';
-import * as path from 'path';
-import * as process from 'process';
+import fs from 'fs';
 
 describe('QRCode', () => {
   it('render ascii', () => {
@@ -27,8 +25,8 @@ describe('QRCode', () => {
     );
   });
 
-  it('render canvas', async () => {
-    const canvas = new Canvas(396 * 2, 396 * 2);
+  it('render canvas', (done) => {
+    const canvas = new Canvas(396 * 2, 396 * 2, 'image');
     const logoImageUrl =
       'https://lh3.googleusercontent.com/a/AEdFTp594x_TQ1fTF1FbP6p7wDSici10pOZc5PKwaShKBA=s96-c';
     const mockDrawImage = async function drawImage(
@@ -46,18 +44,21 @@ describe('QRCode', () => {
     // @ts-ignore
     jest.spyOn(QRCode.prototype, 'drawImage').mockImplementation(mockDrawImage);
 
-    await QRCode.createCanvas('https://powerfulyang.com', canvas, {
+    QRCode.createCanvas('https://powerfulyang.com', canvas, {
       logoImage: logoImageUrl,
-    });
-
-    canvas.createPNGStream().pipe(fs.createWriteStream('test.png'));
-
-    const url = path.join(process.cwd(), 'test.png');
-
-    await open(url, {
-      app: {
-        name: open.apps.chrome,
-      },
+    }).then((_canvas) => {
+      const _targetFile = 'test.png';
+      const out = fs.createWriteStream(_targetFile);
+      _canvas.createJPEGStream().pipe(out);
+      out.on('finish', () => {
+        open(_targetFile, {
+          app: {
+            name: open.apps.chrome,
+          },
+        }).then(() => {
+          done();
+        });
+      });
     });
   });
 });

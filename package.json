@@ -62,5 +62,16 @@
     "qrcode-generator": "*",
     "reflect-metadata": "*",
     "rxjs": "*"
+  },
+  "peerDependenciesMeta": {
+    "qrcode-generator": {
+      "optional": true
+    },
+    "refect-metadata": {
+      "optional": true
+    },
+    "rxjs": {
+      "optional": true
+    }
   }
 }

@@ -1,5 +1,6 @@
 import {
   getInstanceType,
+  getPrototype,
   getType,
   isArray,
   isBlob,
@@ -198,6 +199,14 @@ describe('assertion', () => {
     expect(getInstanceType({})).toBe('Object');
     expect(getInstanceType(Buffer.from(''))).toBe('Uint8Array');
     expect(getType(Buffer)).toBe('Function');
+    const a = { a: 1 };
+    const b = Object.create(a);
+    const c = Object.create(b);
+    expect(getInstanceType(c)).toBe('Object');
+    expect(getInstanceType(b)).toBe('Object');
+    expect(getInstanceType(a)).toBe('Object');
+    expect(getInstanceType(Object.prototype)).toBe(null);
+    expect(getInstanceType(Object)).toBe('Function');
   });
 
   /**
@@ -280,8 +289,6 @@ describe('assertion', () => {
     const arr = [1, { a: 1 }];
     expect(isArray(arr)).toBe(true);
     expect(isEmpty(arrayLike)).toBe(false);
-    const buffer = Buffer.from('');
-    expect(isEmpty(buffer)).toBe(true);
     const buffer2 = Buffer.from('2');
     expect(isEmpty(buffer2)).toBe(false);
     expect(isEmpty(Buffer)).toBe(false);
@@ -329,5 +336,24 @@ describe('assertion', () => {
     expect(isPrimitive(0)).toBe(true);
     expect(isPrimitive(10n)).toBe(true);
     expect(isPrimitive(Symbol(''))).toBe(true);
+  });
+
+  it('getPrototype', () => {
+    expect(getPrototype('')).toBe(String.prototype);
+    expect(getPrototype(false)).toBe(Boolean.prototype);
+    expect(getPrototype(0)).toBe(Number.prototype);
+    expect(getPrototype(10n)).toBe(BigInt.prototype);
+    expect(getPrototype(Symbol(''))).toBe(Symbol.prototype);
+    expect(getPrototype({})).toBe(Object.prototype);
+    expect(getPrototype([])).toBe(Array.prototype);
+    expect(getPrototype(() => {})).toBe(Function.prototype);
+    expect(getPrototype(Test)).toBe(Function.prototype);
+    expect(getPrototype(t)).toBe(Test.prototype);
+    const a = { a: 1 };
+    const b = Object.create(a);
+    const c = Object.create(b);
+    expect(getPrototype(c)).toBe(b);
+    expect(getPrototype(b)).toBe(a);
+    expect(getPrototype(a)).toBe(Object.prototype);
   });
 });
