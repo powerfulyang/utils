@@ -26,9 +26,9 @@ describe('QRCode', () => {
   });
 
   it('render canvas', (done) => {
+    jest.setTimeout(100000);
     const canvas = new Canvas(396 * 2, 396 * 2, 'image');
-    const logoImageUrl =
-      'https://lh3.googleusercontent.com/a/AEdFTp594x_TQ1fTF1FbP6p7wDSici10pOZc5PKwaShKBA=s96-c';
+    const logoImageUrl = 'https://wx2.sinaimg.cn/orj360/006lidWCgy1hbud8ew5svj30hs0hs75e.jpg';
     const mockDrawImage = async function drawImage(
       ctx: CanvasRenderingContext2D,
       _image: HTMLImageElement,
@@ -37,7 +37,7 @@ describe('QRCode', () => {
       dWidth: number,
       dHeight: number,
     ) {
-      const image = await loadImage(logoImageUrl);
+      const image = await loadImage('assets/1061968.png');
       ctx.drawImage(image, dx, dy, dWidth, dHeight);
     };
 

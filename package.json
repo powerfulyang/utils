@@ -61,7 +61,12 @@
   "peerDependencies": {
     "qrcode-generator": "*",
     "reflect-metadata": "*",
-    "rxjs": "*"
+    "rxjs": "*",
+    "unified": "*",
+    "rehype-parse": "*",
+    "rehype-remark": "*",
+    "remark-stringify": "*",
+    "remark-gfm": "*"
   },
   "peerDependenciesMeta": {
     "qrcode-generator": {
@@ -71,6 +76,21 @@
       "optional": true
     },
     "rxjs": {
+      "optional": true
+    },
+    "unified": {
+      "optional": true
+    },
+    "rehype-parse": {
+      "optional": true
+    },
+    "rehype-remark": {
+      "optional": true
+    },
+    "remark-stringify": {
+      "optional": true
+    },
+    "remark-gfm": {
       "optional": true
     }
   }
