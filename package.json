@@ -61,12 +61,12 @@
   "peerDependencies": {
     "qrcode-generator": "*",
     "reflect-metadata": "*",
-    "rxjs": "*",
-    "unified": "*",
     "rehype-parse": "*",
     "rehype-remark": "*",
+    "remark-gfm": "*",
     "remark-stringify": "*",
-    "remark-gfm": "*"
+    "rxjs": "*",
+    "unified": "*"
   },
   "peerDependenciesMeta": {
     "qrcode-generator": {

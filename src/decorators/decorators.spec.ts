@@ -4,7 +4,7 @@ import { Freeze, Required, ToUpperCase, Validate } from './index';
 describe('test decorators', () => {
   class TestClass {
     @ToUpperCase()
-    public desc: string | undefined;
+    desc: string | undefined;
 
     @Validate()
     static testRequireParam(@Required() param: string) {
@@ -14,9 +14,9 @@ describe('test decorators', () => {
 
   @Freeze()
   class FreezeTestClass {
-    public property?: string;
+    property?: string;
 
-    public objectProperty?: object;
+    objectProperty?: object;
 
     constructor(property: string) {
       this.property = property;
