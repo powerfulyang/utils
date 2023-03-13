@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@powerfulyang/lint": "latest",
-    "@rollup/plugin-typescript": "10.0.1",
+    "@rollup/plugin-typescript": "11.0.0",
     "canvas": "2.11.0",
     "open": "8.4.2",
     "typescript": "latest"
