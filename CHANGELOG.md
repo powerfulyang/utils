@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.2](https://github.com/powerfulyang/utils/compare/v1.7.1...v1.7.2) (2023-03-13)
+
+
+### Bug Fixes
+
+* compilerOptions target ([b7fad21](https://github.com/powerfulyang/utils/commit/b7fad2134f0a451791a8c494607dc734efd1306b))
+
 ## [1.7.1](https://github.com/powerfulyang/utils/compare/v1.7.0...v1.7.1) (2023-03-13)
 
 
