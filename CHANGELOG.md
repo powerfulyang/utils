@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/powerfulyang/utils/compare/v1.7.0...v1.7.1) (2023-03-13)
+
+
+### Bug Fixes
+
+* project setting ([eca1c06](https://github.com/powerfulyang/utils/commit/eca1c06ecc2b9cc2545828615c60247eb02d4c90))
+
 ## [1.7.0](https://github.com/powerfulyang/utils/compare/v1.6.0...v1.7.0) (2023-03-13)
 
 
