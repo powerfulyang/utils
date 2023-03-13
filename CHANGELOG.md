@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/powerfulyang/utils/compare/v1.6.0...v1.7.0) (2023-03-13)
+
+
+### Features
+
+* html2md ([433a24c](https://github.com/powerfulyang/utils/commit/433a24ca3ae5e0eee38d21e410874ad366b42353))
+
 ## [1.6.0](https://github.com/powerfulyang/utils/compare/v1.5.0...v1.6.0) (2022-12-20)
 
 
