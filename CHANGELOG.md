@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/powerfulyang/utils/compare/v1.8.0...v1.8.1) (2023-03-14)
+
+
+### Bug Fixes
+
+* package.json "exports" filed ([add95a7](https://github.com/powerfulyang/utils/commit/add95a77e3a6b9486163cc87ef606f3109c6aba2))
+
 ## [1.8.0](https://github.com/powerfulyang/utils/compare/v1.7.2...v1.8.0) (2023-03-14)
 
 
