@@ -13,7 +13,7 @@
     },
     "./esm": {
       "import": "./esm/index.mjs",
-      "types": "./dist/types/esm-only/index.d.ts"
+      "types": "./esm/index.d.ts"
     }
   },
   "sideEffects": false,
@@ -46,7 +46,7 @@
     "last 2 versions"
   ],
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist esm",
     "build": "run-p build:*",
     "build:source": "rollup -c rollup.config.mjs && rollup -c rollup.esm.config.mjs",
     "build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json",
