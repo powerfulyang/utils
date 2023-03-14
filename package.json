@@ -10,6 +10,10 @@
       "import": "./dist/es/index.mjs",
       "require": "./dist/cjs/index.cjs",
       "types": "./dist/types/index.d.ts"
+    },
+    "./esm": {
+      "import": "./esm/index.mjs",
+      "types": "./dist/types/esm-only/index.d.ts"
     }
   },
   "sideEffects": false,
@@ -33,7 +37,8 @@
   ],
   "files": [
     "dist",
-    "src"
+    "src",
+    "esm"
   ],
   "browserslist": [
     "last 2 versions"
@@ -41,7 +46,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "run-p build:*",
-    "build:source": "rollup -c",
+    "build:source": "rollup -c rollup.config.mjs && rollup -c rollup.esm.config.mjs",
     "build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json",
     "prettier": "prettier \"src/**/*.ts\" --write",
     "lint:js": "eslint --ext .ts ./src --fix",
@@ -59,18 +64,18 @@
     "typescript": "latest"
   },
   "dependencies": {
+    "mdast-util-to-markdown": "*",
     "qrcode-generator": "*",
     "reflect-metadata": "*",
     "rehype-parse": "*",
     "rehype-remark": "*",
+    "rehype-remove-comments": "*",
+    "rehype-sanitize": "*",
     "remark-gfm": "*",
     "remark-stringify": "*",
     "rxjs": "*",
-    "unified": "*",
     "string-width": "*",
-    "rehype-sanitize": "*",
-    "unist-util-visit": "*",
-    "rehype-remove-comments": "*",
-    "mdast-util-to-markdown": "*"
+    "unified": "*",
+    "unist-util-visit": "*"
   }
 }

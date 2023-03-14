@@ -7,23 +7,15 @@ const pkgDeps = Array.from(Object.keys({ ...pkg.dependencies, ...pkg.peerDepende
  * @type {import('rollup').RollupOptions}
  */
 const config = {
-  input: 'src/index.ts',
+  input: 'src/esm-only/index.ts',
   output: [
-    {
-      entryFileNames: `[name].cjs`,
-      dir: 'dist/cjs',
-      format: 'cjs',
-      exports: 'named',
-      sourcemap: true,
-      preserveModules: true,
-    },
     {
       sourcemap: true,
       entryFileNames: '[name].mjs',
       format: 'es',
       exports: 'named',
       preserveModules: true,
-      dir: 'dist/es',
+      dir: 'esm',
     },
   ],
   plugins: [
