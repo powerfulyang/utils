@@ -33,7 +33,9 @@
   },
   "license": "MIT",
   "keywords": [
-    "utils"
+    "utils",
+    "html2md",
+    "generate qrcode"
   ],
   "files": [
     "dist",

@@ -3,6 +3,7 @@ import type { CanvasRenderingContext2D } from 'canvas';
 import { Canvas, loadImage } from 'canvas';
 import open from 'open';
 import fs from 'fs';
+import path from 'path';
 
 describe('QRCode', () => {
   it('render ascii', () => {
@@ -47,7 +48,7 @@ describe('QRCode', () => {
     QRCode.createCanvas('https://powerfulyang.com', canvas, {
       logoImage: logoImageUrl,
     }).then((_canvas) => {
-      const _targetFile = 'test.png';
+      const _targetFile = path.join(process.cwd(), 'test.png');
       const out = fs.createWriteStream(_targetFile);
       _canvas.createJPEGStream().pipe(out);
       out.on('finish', () => {
@@ -55,6 +56,7 @@ describe('QRCode', () => {
           app: {
             name: open.apps.chrome,
           },
+          wait: true,
         }).then(() => {
           done();
         });
