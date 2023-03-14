@@ -58,7 +58,7 @@
     "open": "8.4.2",
     "typescript": "latest"
   },
-  "peerDependencies": {
+  "dependencies": {
     "qrcode-generator": "*",
     "reflect-metadata": "*",
     "rehype-parse": "*",
@@ -66,32 +66,11 @@
     "remark-gfm": "*",
     "remark-stringify": "*",
     "rxjs": "*",
-    "unified": "*"
-  },
-  "peerDependenciesMeta": {
-    "qrcode-generator": {
-      "optional": true
-    },
-    "refect-metadata": {
-      "optional": true
-    },
-    "rxjs": {
-      "optional": true
-    },
-    "unified": {
-      "optional": true
-    },
-    "rehype-parse": {
-      "optional": true
-    },
-    "rehype-remark": {
-      "optional": true
-    },
-    "remark-stringify": {
-      "optional": true
-    },
-    "remark-gfm": {
-      "optional": true
-    }
+    "unified": "*",
+    "string-width": "*",
+    "rehype-sanitize": "*",
+    "unist-util-visit": "*",
+    "rehype-remove-comments": "*",
+    "mdast-util-to-markdown": "*"
   }
 }

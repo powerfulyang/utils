@@ -28,6 +28,9 @@ const esModules = [
   'ccount',
   'escape-string-regexp',
   'markdown.+',
+  'string-width',
+  'strip.+',
+  'ansi.+',
 ].join('|');
 
 /**
