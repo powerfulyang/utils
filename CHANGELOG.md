@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/powerfulyang/utils/compare/v1.7.2...v1.8.0) (2023-03-14)
+
+
+### Features
+
+* 支持转换 task list, 兼容 ul 并列出现的情况 ([95319f6](https://github.com/powerfulyang/utils/commit/95319f68c8620721ad94df4d988f876de576a391))
+
 ## [1.7.2](https://github.com/powerfulyang/utils/compare/v1.7.1...v1.7.2) (2023-03-13)
 
 
