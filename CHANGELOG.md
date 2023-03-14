@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/powerfulyang/utils/compare/v1.9.0...v1.9.1) (2023-03-14)
+
+
+### Bug Fixes
+
+* esm tsconfig ([531bcf3](https://github.com/powerfulyang/utils/commit/531bcf36018a3ff3315842df00981842b15e5fbf))
+
 ## [1.9.0](https://github.com/powerfulyang/utils/compare/v1.8.1...v1.9.0) (2023-03-14)
 
 
