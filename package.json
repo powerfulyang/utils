@@ -72,12 +72,10 @@
     "rehype-parse": "*",
     "rehype-remark": "*",
     "rehype-remove-comments": "*",
-    "rehype-sanitize": "*",
     "remark-gfm": "*",
     "remark-stringify": "*",
     "rxjs": "*",
     "string-width": "*",
-    "unified": "*",
-    "unist-util-visit": "*"
+    "unified": "*"
   }
 }

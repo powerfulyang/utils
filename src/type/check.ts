@@ -1,4 +1,4 @@
-import type { VoidFunction } from '@/utils';
+import type { VoidFunction } from '@/index';
 
 export class Test {
   constructor(public name: string) {

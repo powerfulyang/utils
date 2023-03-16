@@ -7,3 +7,4 @@ export * from './enum';
 export * from './blob';
 export * from './scroll';
 export * from './qrcode';
+export * from './type';
