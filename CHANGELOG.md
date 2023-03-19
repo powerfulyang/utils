@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.2](https://github.com/powerfulyang/utils/compare/v1.9.1...v1.9.2) (2023-03-19)
+
+
+### Bug Fixes
+
+* absolute url ([2a2a9ea](https://github.com/powerfulyang/utils/commit/2a2a9ea5ebf4c0755a3c7ef6c1b219ec21e86b6e))
+
 ## [1.9.1](https://github.com/powerfulyang/utils/compare/v1.9.0...v1.9.1) (2023-03-14)
 
 
