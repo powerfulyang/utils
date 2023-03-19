@@ -7,8 +7,9 @@ import stringWidth from 'string-width';
 import rehypeRemoveComments from 'rehype-remove-comments';
 import type { Unsafe } from 'mdast-util-to-markdown';
 import { defaultHandlers } from 'mdast-util-to-markdown';
+import { convertURLToAbsoluteURL } from './convertURLToAbsoluteURL';
 
-const { text } = defaultHandlers;
+const { text, link } = defaultHandlers;
 
 /**
  * @description By default, mdast-util-to-markdown will escape some characters in some
@@ -52,6 +53,18 @@ export async function html2md(html: string): Promise<string> {
             node,
             parent,
             { ...context, unsafe: context.unsafe.filter(unsafeFilter) },
+            safeOptions,
+          );
+        },
+        link: (node, parent, context, safeOptions) => {
+          const origin = window.location.href || '';
+          return link(
+            {
+              ...node,
+              url: convertURLToAbsoluteURL(node.url, origin),
+            },
+            parent,
+            context,
             safeOptions,
           );
         },

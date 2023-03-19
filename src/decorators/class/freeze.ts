@@ -1,4 +1,4 @@
-import type { ConstructorFunction } from '@/utils';
+import type { ConstructorFunction } from '@/type';
 
 export const Freeze =
   () =>

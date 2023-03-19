@@ -1,4 +1,4 @@
-import type { Dict, Falsy, Nil, NonUndefined, Primitive } from '@/utils';
+import type { Dict, Falsy, Nil, NonUndefined, Primitive } from '@/type';
 
 type Type =
   | 'Number'
