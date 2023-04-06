@@ -7,8 +7,10 @@ export const requiredMetadataKey = Symbol('required');
  * 需要配合 @Validate 注解使用
  */
 export const Required = (): ParameterDecorator => (target, propertyKey, parameterIndex) => {
-  const existingRequiredParameters =
-    Reflect.getOwnMetadata(requiredMetadataKey, target, propertyKey) || [];
-  existingRequiredParameters.push(parameterIndex);
-  Reflect.defineMetadata(requiredMetadataKey, existingRequiredParameters, target, propertyKey);
+  if (propertyKey) {
+    const existingRequiredParameters =
+      Reflect.getOwnMetadata(requiredMetadataKey, target, propertyKey) || [];
+    existingRequiredParameters.push(parameterIndex);
+    Reflect.defineMetadata(requiredMetadataKey, existingRequiredParameters, target, propertyKey);
+  }
 };

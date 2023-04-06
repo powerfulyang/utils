@@ -1,9 +1,9 @@
 // eslint-disable-next-line max-classes-per-file
-import { Freeze, Required, ToUpperCase, Validate } from './index';
+import { Freeze, getMetadata, PropertyDecorator, Required, Validate } from './index';
 
 describe('test decorators', () => {
   class TestClass {
-    @ToUpperCase()
+    @PropertyDecorator('hello')
     desc: string | undefined;
 
     @Validate()
@@ -32,9 +32,9 @@ describe('test decorators', () => {
     expect(TestClass.testRequireParam).toThrow('Missing required parameter at index 0');
   });
 
-  it('test @ToUpperCase', () => {
-    testClass.desc = 'description';
-    expect(testClass.desc).toBe(testClass.desc.toUpperCase());
+  it('test @PropertyDecorator', () => {
+    const metadata = getMetadata(testClass, 'desc');
+    expect(metadata).toBe('hello');
   });
 
   it('test @Freeze', () => {

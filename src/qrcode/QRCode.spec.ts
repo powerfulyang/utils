@@ -56,7 +56,6 @@ describe('QRCode', () => {
           app: {
             name: open.apps.chrome,
           },
-          wait: true,
         }).then(() => {
           done();
         });

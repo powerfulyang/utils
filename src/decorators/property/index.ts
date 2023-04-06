@@ -1,1 +1,1 @@
-export * from './toUpperCase';
+export * from './propertyDecorator';
