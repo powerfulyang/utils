@@ -1,3 +1,5 @@
+export * from './ValueOrFunction';
+
 /**
  * @description parameters type - P;
  * @description return type - R;

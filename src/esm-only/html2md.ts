@@ -6,10 +6,9 @@ import remarkGfm from 'remark-gfm';
 import stringWidth from 'string-width';
 import rehypeRemoveComments from 'rehype-remove-comments';
 import type { Unsafe } from 'mdast-util-to-markdown';
-import { defaultHandlers } from 'mdast-util-to-markdown';
+import { text } from 'mdast-util-to-markdown/lib/handle/text';
+import { link } from 'mdast-util-to-markdown/lib/handle/link';
 import { convertURLToAbsoluteURL } from './convertURLToAbsoluteURL';
-
-const { text, link } = defaultHandlers;
 
 /**
  * @description By default, mdast-util-to-markdown will escape some characters in some
