@@ -1,7 +1,6 @@
 import { QRCode } from '@/qrcode/QRCode';
 import type { CanvasRenderingContext2D } from 'canvas';
 import { Canvas, loadImage } from 'canvas';
-import open from 'open';
 import fs from 'fs';
 import path from 'path';
 
@@ -52,13 +51,7 @@ describe('QRCode', () => {
       const out = fs.createWriteStream(_targetFile);
       _canvas.createJPEGStream().pipe(out);
       out.on('finish', () => {
-        open(_targetFile, {
-          app: {
-            name: open.apps.chrome,
-          },
-        }).then(() => {
-          done();
-        });
+        done();
       });
     });
   });
