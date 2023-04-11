@@ -1,4 +1,4 @@
-import { isNumeric } from '@/utils';
+import { isNumeric } from '@/assertion';
 
 /**
  * get enum keys

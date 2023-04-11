@@ -1,4 +1,4 @@
-import { isUndefined } from '@/utils';
+import { isUndefined } from '@/assertion';
 import 'reflect-metadata';
 import { requiredMetadataKey } from '../parameter';
 
@@ -7,7 +7,7 @@ export const Validate =
     const method = descriptor.value;
     Reflect.set(descriptor, 'value', function validate(this: any, ...args: any[]) {
       const requiredParameters = Reflect.getMetadata(requiredMetadataKey, target, propertyName);
-      if (requiredParameters.length) {
+      if (requiredParameters.length !== 0) {
         requiredParameters.forEach((parameterIndex: number) => {
           if (isUndefined(args[parameterIndex])) {
             throw new Error(`Missing required parameter at index ${parameterIndex}`);

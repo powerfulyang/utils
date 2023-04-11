@@ -1,4 +1,4 @@
-import { isFunction } from '@/assertion/assertion';
+import { isFunction } from '@/assertion';
 
 export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue;
 export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>;

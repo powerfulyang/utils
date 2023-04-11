@@ -1,4 +1,3 @@
-export * from './browser';
 export * from './common';
 export * from './utils';
 export * from './decorators';
@@ -8,3 +7,5 @@ export * from './blob';
 export * from './scroll';
 export * from './qrcode';
 export * from './type';
+export * from './assertion';
+export * from './dom';

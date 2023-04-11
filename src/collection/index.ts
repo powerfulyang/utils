@@ -1,5 +1,7 @@
 import type { Undefinable } from '@/type';
 
+export * from './utils';
+
 /**
  * fp
  * const array = [1, 2, 3, 4, 5];
@@ -56,5 +58,3 @@ export const removeItemWithIndex = <T>(arr: T[], index: number): T[] => {
   newArr.splice(index, 1);
   return newArr;
 };
-
-export * from './utils';
