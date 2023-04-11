@@ -1,8 +1,10 @@
+name: release-please
+
 on:
   push:
     branches:
       - master
-name: release-please
+
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -26,7 +28,7 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: 'pnpm-lock.yaml'
         if: ${{ steps.release.outputs.release_created }}
-      - run: pnpm i --frozen-lockfile
+      - run: pnpm i
         if: ${{ steps.release.outputs.release_created }}
       - name: npm login
         run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > ~/.npmrc

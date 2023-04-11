@@ -2,7 +2,12 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "outDir": "esm"
+    "outDir": "esm",
+    "emitDeclarationOnly": true
   },
-  "include": ["src/esm-only"]
+  "include": ["src/esm-only"],
+  "exclude": [
+    "node_modules",
+    "src/**/*.spec.ts"
+  ]
 }

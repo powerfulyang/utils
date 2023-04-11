@@ -4,5 +4,10 @@
     "outDir": "./dist/types",
     "emitDeclarationOnly": true,
     "declaration": true
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "src/**/*.spec.ts",
+    "src/esm-only"
+  ]
 }

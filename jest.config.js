@@ -34,7 +34,7 @@ const esModules = [
 ].join('|');
 
 /**
- * @type {import('@jest/types').Config.InitialOptions}
+ * @type {import('jest').Config}
  */
 module.exports = {
   moduleNameMapper,
@@ -42,10 +42,16 @@ module.exports = {
     '^.+\\.(ts|tsx|js)$': '@swc/jest',
   },
   transformIgnorePatterns: [`node_modules/.pnpm/(?!${esModules})`],
-  testTimeout: 10000,
   testEnvironment: 'jsdom',
-  testEnvironmentOptions: {
-    resources: 'usable',
-  },
-  forceExit: true,
+  setupFiles: ['./.jest/jest.setup.ts'],
+  maxWorkers: '50%',
+  reporters: [
+    [
+      'github-actions',
+      {
+        silent: false,
+      },
+    ],
+    'summary',
+  ],
 };

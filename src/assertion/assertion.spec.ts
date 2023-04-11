@@ -20,7 +20,7 @@ import {
   isString,
   isUndefined,
   isVoid,
-} from '@/utils';
+} from '@/assertion';
 
 describe('assertion', () => {
   class Test {}

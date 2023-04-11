@@ -299,8 +299,21 @@ export function isVoid(value: any): value is void {
   return value === undefined;
 }
 
-export const isDevProcess = process.env.NODE_ENV !== 'production';
+/**
+ * @description 判断是不是 dev 环境
+ */
+export const isDevProcess = process.env.NODE_ENV === 'development';
+/**
+ * @description 判断是不是 prod 环境
+ */
 export const isProdProcess = process.env.NODE_ENV === 'production';
+/**
+ * @description 判断是不是非 prod 环境
+ */
+export const isNotProdProcess = process.env.NODE_ENV !== 'production';
+/**
+ * @description 判断是不是 test 环境
+ */
 export const isTestProcess = process.env.NODE_ENV === 'test';
 export const isClient = typeof window === 'object';
 export const isServer = typeof window === 'undefined';

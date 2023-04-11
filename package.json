@@ -56,7 +56,7 @@
     "tsc-check": "tsc --noEmit",
     "postprepare": "husky install",
     "prepublishOnly": "npm run build",
-    "precommit": "npm run test && npm run tsc-check && lint-staged"
+    "precommit": "lint-staged"
   },
   "devDependencies": {
     "@powerfulyang/lint": "3.1.3",
@@ -66,15 +66,15 @@
   },
   "dependencies": {
     "mdast-util-to-markdown": "^1.5.0",
-    "qrcode-generator": "*",
-    "reflect-metadata": "*",
-    "rehype-parse": "*",
-    "rehype-remark": "*",
-    "rehype-remove-comments": "*",
-    "remark-gfm": "*",
-    "remark-stringify": "*",
-    "rxjs": "*",
-    "string-width": "*",
-    "unified": "*"
+    "qrcode-generator": "^1.4.4",
+    "reflect-metadata": "0.1.13",
+    "rehype-parse": "^8.0.4",
+    "rehype-remark": "^9.1.2",
+    "rehype-remove-comments": "^5.0.0",
+    "remark-gfm": "^3.0.1",
+    "remark-stringify": "^10.0.2",
+    "rxjs": "7.8.0",
+    "string-width": "^5.1.2",
+    "unified": "^10.1.2"
   }
 }
