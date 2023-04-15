@@ -45,7 +45,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   setupFiles: ['./.jest/jest.setup.ts'],
   maxWorkers: '50%',
-  reporters: [
+  reporters: process.env.CI && [
     [
       'github-actions',
       {
