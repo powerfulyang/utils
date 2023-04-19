@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { isValidIdCard } from './index';
 
 describe('validate', () => {

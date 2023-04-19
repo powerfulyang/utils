@@ -44,7 +44,6 @@ module.exports = {
   transformIgnorePatterns: [`node_modules/.pnpm/(?!${esModules})`],
   testEnvironment: 'jsdom',
   setupFiles: ['./.jest/jest.setup.ts'],
-  maxWorkers: '50%',
   reporters: process.env.CI && [
     [
       'github-actions',
@@ -54,4 +53,5 @@ module.exports = {
     ],
     'summary',
   ],
+  detectOpenHandles: true,
 };

@@ -1,5 +1,6 @@
 // eslint-disable-next-line max-classes-per-file
-import { Freeze, getMetadata, PropertyDecorator, Required, Validate } from './index';
+import { describe, expect, it } from '@jest/globals';
+import { Freeze, getMetadata, PropertyDecorator, Required, Validate } from '@/index';
 
 describe('test decorators', () => {
   class TestClass {

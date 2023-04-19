@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 export const requiredMetadataKey = Symbol('required');
 
 /**

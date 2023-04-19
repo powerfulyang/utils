@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { html2md } from './html2md';
 
 describe('html2md', () => {

@@ -1,5 +1,4 @@
 import { isUndefined } from '@/assertion';
-import 'reflect-metadata';
 import { requiredMetadataKey } from '../parameter';
 
 export const Validate =

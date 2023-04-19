@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 const symbol = Symbol('ToUpperCase');
 
 export const PropertyDecorator =

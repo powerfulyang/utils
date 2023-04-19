@@ -1,8 +1,9 @@
 import { QRCode } from '@/qrcode/QRCode';
 import type { CanvasRenderingContext2D } from 'canvas';
 import { Canvas, loadImage } from 'canvas';
-import fs from 'fs';
-import path from 'path';
+import { describe, expect, it, jest } from '@jest/globals';
+import { createWriteStream } from 'node:fs';
+import { join } from 'node:path';
 
 describe('QRCode', () => {
   it('render ascii', () => {
@@ -46,8 +47,8 @@ describe('QRCode', () => {
     QRCode.createCanvas('https://powerfulyang.com', canvas, {
       logoImage: logoImageUrl,
     }).then((_canvas) => {
-      const _targetFile = path.join(process.cwd(), 'test.png');
-      const out = fs.createWriteStream(_targetFile);
+      const _targetFile = join(process.cwd(), 'test.png');
+      const out = createWriteStream(_targetFile);
       _canvas.createJPEGStream().pipe(out);
       out.on('finish', () => {
         done();

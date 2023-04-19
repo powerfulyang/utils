@@ -1,5 +1,9 @@
 import typescript from '@rollup/plugin-typescript';
-import pkg from './package.json' assert {type: 'json'};
+
+import { readFileSync } from 'node:fs';
+
+const str = readFileSync('./package.json', 'utf-8');
+const pkg = JSON.parse(str);
 
 const pkgDeps = Array.from(Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies }));
 

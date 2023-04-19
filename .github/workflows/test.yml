@@ -10,13 +10,14 @@ on:
 
 jobs:
   test:
+    name: Test(shard ${{ matrix.shard }})
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         node-version: ['lts/*']
         shard: ['1/4', '2/4', '3/4', '4/4']
-    name: Node v${{ matrix.node-version }} (${{ matrix.shard }})
-    runs-on: ubuntu-latest
+        os: [ubuntu-latest]
 
     steps:
       - uses: actions/checkout@v3
@@ -41,7 +42,13 @@ jobs:
 
   tsc-check:
     name: tsc check
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [ 'lts/*' ]
+        os: [ ubuntu-latest ]
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -49,10 +56,10 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: latest
-      - name: Use Node.js lts/*
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
+          node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
           cache-dependency-path: 'pnpm-lock.yaml'
       - name: install

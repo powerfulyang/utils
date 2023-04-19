@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 export * from './assertion';
 export * from './blob';
 export * from './collection';
