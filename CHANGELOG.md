@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.10.0](https://github.com/powerfulyang/utils/compare/v1.9.2...v1.10.0) (2023-04-19)
+
+
+### Features
+
+* jest best practice ([d5da960](https://github.com/powerfulyang/utils/commit/d5da9601f6c6c6ff20dc31009b6d71d9c73ac56b))
+* jest from @jest/globals ([56aed3b](https://github.com/powerfulyang/utils/commit/56aed3bf832c498451a11aaa11813027f758d33f))
+
+
+### Bug Fixes
+
+* pnpm .npmrc expose dependency ([febc1c8](https://github.com/powerfulyang/utils/commit/febc1c8b644c00823fba6979ae70d38e08d819cc))
+
 ## [1.9.2](https://github.com/powerfulyang/utils/compare/v1.9.1...v1.9.2) (2023-03-19)
 
 
