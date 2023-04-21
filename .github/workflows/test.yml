@@ -44,7 +44,6 @@ jobs:
     name: tsc check
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
       matrix:
         node-version: [ 'lts/*' ]
         os: [ ubuntu-latest ]
