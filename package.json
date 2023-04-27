@@ -67,7 +67,7 @@
     "rehype-remove-comments": "5.0.0",
     "remark-gfm": "3.0.1",
     "remark-stringify": "10.0.2",
-    "rxjs": "7.8.0",
+    "rxjs": "7.8.1",
     "string-width": "5.1.2",
     "unified": "10.1.2"
   },
