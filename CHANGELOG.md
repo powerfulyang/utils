@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/powerfulyang/utils/compare/v1.10.0...v1.10.1) (2023-04-27)
+
+
+### Bug Fixes
+
+* code block ([ca2efb4](https://github.com/powerfulyang/utils/commit/ca2efb45c172201e4435a0a7ca2cdfd201567deb))
+
 ## [1.10.0](https://github.com/powerfulyang/utils/compare/v1.9.2...v1.10.0) (2023-04-19)
 
 
