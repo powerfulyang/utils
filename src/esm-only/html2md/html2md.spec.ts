@@ -67,8 +67,10 @@ describe('html2md', () => {
     const html = `
     <pre>
         <div>Copy code</div>
+        <div>
         <code class="!whitespace-pre hljs language-javascript">console.log('hello world')
         </code>
+        </div>
     </pre>
     `;
     const md = await html2md(html);
