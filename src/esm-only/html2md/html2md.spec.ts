@@ -27,10 +27,12 @@ describe('html2md', () => {
     </table>
     `;
     const md = await html2md(html);
-    expect(md).toBe(`| name    | type   | description |
+    expect(md).toBe(
+      `| name    | type   | description |
 | ------- | ------ | ----------- |
 | name    | string | name        |
-| version | string | version     |`);
+| version | string | version     |`,
+    );
   });
 
   it('should convert ul to markdown', async () => {
@@ -41,8 +43,10 @@ describe('html2md', () => {
     </ul>
     `;
     const md = await html2md(html);
-    expect(md).toBe(`+ name
-+ version`);
+    expect(md).toBe(
+      `+ name
++ version`,
+    );
   });
 
   it('should convert ol to markdown', async () => {
@@ -53,18 +57,26 @@ describe('html2md', () => {
     </ol>
     `;
     const md = await html2md(html);
-    expect(md).toBe(`1. name
-2. version`);
+    expect(md).toBe(
+      `1. name
+2. version`,
+    );
   });
 
   it('should convert pre to markdown', async () => {
     const html = `
-    <pre><code>console.log('hello world')</code></pre>
+    <pre>
+        <div>Copy code</div>
+        <code class="!whitespace-pre hljs language-javascript">console.log('hello world')
+        </code>
+    </pre>
     `;
     const md = await html2md(html);
-    expect(md).toBe(`\`\`\`
+    expect(md).toBe(
+      `\`\`\`javascript
 console.log('hello world')
-\`\`\``);
+\`\`\``,
+    );
   });
 
   it('should convert p to markdown', async () => {
@@ -83,7 +95,9 @@ console.log('hello world')
     </ul>
     `;
     const md = await html2md(html);
-    expect(md).toBe(`+ [x] name
-+ [ ] version`);
+    expect(md).toBe(
+      `+ [x] name
++ [ ] version`,
+    );
   });
 });

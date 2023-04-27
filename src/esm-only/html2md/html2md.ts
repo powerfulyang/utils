@@ -1,3 +1,4 @@
+import { htmlToMarkdownPlugin } from '@/esm-only/html2md/plugin';
 import { unified } from 'unified';
 import rehypeParse from 'rehype-parse';
 import rehypeRemark from 'rehype-remark';
@@ -9,7 +10,7 @@ import type { Unsafe } from 'mdast-util-to-markdown';
 import { defaultHandlers } from 'mdast-util-to-markdown';
 import { convertURLToAbsoluteURL } from './convertURLToAbsoluteURL';
 
-const { text, link } = defaultHandlers;
+const { text, link, code } = defaultHandlers;
 
 /**
  * @description By default, mdast-util-to-markdown will escape some characters in some
@@ -28,6 +29,7 @@ export async function html2md(html: string): Promise<string> {
     .use(rehypeParse, {
       fragment: true,
     })
+    .use(htmlToMarkdownPlugin)
     .use(rehypeRemoveComments)
     .use(rehypeRemark, {
       unchecked: '[ ] ',
@@ -57,11 +59,23 @@ export async function html2md(html: string): Promise<string> {
           );
         },
         link: (node, parent, context, safeOptions) => {
-          const origin = window.location.href || '';
           return link(
             {
               ...node,
-              url: convertURLToAbsoluteURL(node.url, origin),
+              url: convertURLToAbsoluteURL(node.url),
+            },
+            parent,
+            context,
+            safeOptions,
+          );
+        },
+        code: (node, parent, context, safeOptions) => {
+          // Remove last line break
+          const value = node.value.trimEnd();
+          return code(
+            {
+              ...node,
+              value,
             },
             parent,
             context,

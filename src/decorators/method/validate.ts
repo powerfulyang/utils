@@ -1,5 +1,6 @@
 import { isUndefined } from '@/assertion';
 import { requiredMetadataKey } from '../parameter';
+import 'reflect-metadata';
 
 export const Validate =
   (): MethodDecorator => (target, propertyName, descriptor: TypedPropertyDescriptor<any>) => {
