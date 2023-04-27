@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/powerfulyang/utils/compare/v1.10.1...v1.10.2) (2023-04-27)
+
+
+### Bug Fixes
+
+* search code tag in pre tag recursively ([433838c](https://github.com/powerfulyang/utils/commit/433838c22b03683c2c337aec6e4cdecd5c184f46))
+
 ## [1.10.1](https://github.com/powerfulyang/utils/compare/v1.10.0...v1.10.1) (2023-04-27)
 
 
