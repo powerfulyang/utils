@@ -77,7 +77,7 @@
     "@jest/globals": "29.5.0",
     "@powerfulyang/lint": "3.2.1",
     "@rollup/plugin-typescript": "11.1.0",
-    "@types/node": "18.16.1",
+    "@types/node": "18.16.7",
     "canvas": "2.11.2",
     "typescript": "5.0.4"
   }
