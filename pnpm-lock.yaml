@@ -49,8 +49,8 @@ devDependencies:
     specifier: 3.2.1
     version: 3.2.1(@types/node@20.1.2)(canvas@2.11.2)(ts-node@10.9.1)(typescript@5.0.4)
   '@rollup/plugin-typescript':
-    specifier: 11.1.0
-    version: 11.1.0(typescript@5.0.4)
+    specifier: 11.1.1
+    version: 11.1.1(typescript@5.0.4)
   '@types/node':
     specifier: 20.1.2
     version: 20.1.2
@@ -1095,8 +1095,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@rollup/plugin-typescript@11.1.0(typescript@5.0.4):
-    resolution: {integrity: sha512-86flrfE+bSHB69znnTV6kVjkncs2LBMhcTCyxWgRxLyfXfQrxg4UwlAqENnjrrxnSNS/XKCDJCl8EkdFJVHOxw==}
+  /@rollup/plugin-typescript@11.1.1(typescript@5.0.4):
+    resolution: {integrity: sha512-Ioir+x5Bejv72Lx2Zbz3/qGg7tvGbxQZALCLoJaGrkNXak/19+vKgKYJYM3i/fJxvsb23I9FuFQ8CUBEfsmBRg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.14.0||^3.0.0
