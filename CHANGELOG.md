@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.11.0](https://github.com/powerfulyang/utils/compare/v1.10.2...v1.11.0) (2023-05-30)
+
+
+### Features
+
+* support convert katex to md ([6601637](https://github.com/powerfulyang/utils/commit/66016373ac1220fb2cc41b78f70fb26262859d15))
+
+
+### Bug Fixes
+
+* pre tag convert, close [#74](https://github.com/powerfulyang/utils/issues/74) ([6601637](https://github.com/powerfulyang/utils/commit/66016373ac1220fb2cc41b78f70fb26262859d15))
+
 ## [1.10.2](https://github.com/powerfulyang/utils/compare/v1.10.1...v1.10.2) (2023-04-27)
 
 
