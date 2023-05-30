@@ -31,6 +31,14 @@ const esModules = [
   'string-width',
   'strip.+',
   'ansi.+',
+  '@powerfulyang.+',
+  'execa',
+  'npm-run-path',
+  'path-key',
+  'onetime',
+  'mimic-fn',
+  'human-signals',
+  'is.+',
 ].join('|');
 
 /**

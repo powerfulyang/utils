@@ -1,13 +1,13 @@
-import { htmlToMarkdownPlugin } from '@/esm-only/html2md/plugin';
-import { unified } from 'unified';
-import rehypeParse from 'rehype-parse';
-import rehypeRemark from 'rehype-remark';
-import remarkStringify from 'remark-stringify';
-import remarkGfm from 'remark-gfm';
-import stringWidth from 'string-width';
-import rehypeRemoveComments from 'rehype-remove-comments';
+import { preToMarkdownPlugin, katexToMarkdownPlugin } from '@/esm-only/html2md/plugin';
 import type { Unsafe } from 'mdast-util-to-markdown';
 import { defaultHandlers } from 'mdast-util-to-markdown';
+import rehypeParse from 'rehype-parse';
+import rehypeRemark from 'rehype-remark';
+import rehypeRemoveComments from 'rehype-remove-comments';
+import remarkGfm from 'remark-gfm';
+import remarkStringify from 'remark-stringify';
+import stringWidth from 'string-width';
+import { unified } from 'unified';
 import { convertURLToAbsoluteURL } from './convertURLToAbsoluteURL';
 
 const { text, link, code } = defaultHandlers;
@@ -29,8 +29,9 @@ export async function html2md(html: string): Promise<string> {
     .use(rehypeParse, {
       fragment: true,
     })
-    .use(htmlToMarkdownPlugin)
+    .use(preToMarkdownPlugin)
     .use(rehypeRemoveComments)
+    .use(katexToMarkdownPlugin)
     .use(rehypeRemark, {
       unchecked: '[ ] ',
       checked: '[x] ',

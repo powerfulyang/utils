@@ -1,4 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
+import clipboard from '@powerfulyang/clipboardy';
 import { html2md } from './html2md';
 
 describe('html2md', () => {
@@ -63,7 +64,7 @@ describe('html2md', () => {
     );
   });
 
-  it('should convert pre to markdown', async () => {
+  it('should convert pre to markdown(pre+code+~)', async () => {
     const html = `
     <pre>
         <div>Copy code</div>
@@ -79,6 +80,18 @@ describe('html2md', () => {
 console.log('hello world')
 \`\`\``,
     );
+  });
+
+  it('should convert pre to markdown(pre+~)', async () => {
+    const html = `
+    <pre>
+pip install -i https://mirrors.cloud.tencent.com/pypi/simple &lt;some-package&gt;
+</pre>
+    `;
+    const md = await html2md(html);
+    expect(md).toBe(`\`\`\`
+pip install -i https://mirrors.cloud.tencent.com/pypi/simple <some-package>
+\`\`\``);
   });
 
   it('should convert p to markdown', async () => {
@@ -101,5 +114,15 @@ console.log('hello world')
       `+ [x] name
 + [ ] version`,
     );
+  });
+
+  it('should convert math to markdown', async () => {
+    const html = `<p>x= <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo>−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>S</mi></msup></mrow><annotation encoding="application/x-tex">(-1)^ {S}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0913em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em">S</span></span></span></span></span></span></span></span></span></span></span></span></span> <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">×</span></span></span></span></span> (1.M) <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">×</span></span></span></span></span> <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>e</mi></msup></mrow><annotation encoding="application/x-tex">2^ {e}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span></span></span></span></span></span></span></span></span></span></span></span></span><br>
+<!-- -->e=E-1023</p>`;
+    const md = await html2md(html);
+    clipboard.writeSync(md);
+    const res = clipboard.readSync();
+    expect(res).toBe(`x= $ (-1)^ {S} $ $ \\times $ (1.M) $ \\times $ $ 2^ {e} $\\
+e=E-1023`);
   });
 });

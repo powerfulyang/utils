@@ -67,7 +67,7 @@
     "rehype-remark": "9.1.2",
     "rehype-remove-comments": "5.0.0",
     "remark-gfm": "3.0.1",
-    "remark-stringify": "10.0.2",
+    "remark-stringify": "10.0.3",
     "rxjs": "7.8.1",
     "string-width": "6.1.0",
     "unified": "10.1.2",
@@ -75,9 +75,10 @@
   },
   "devDependencies": {
     "@jest/globals": "29.5.0",
+    "@powerfulyang/clipboardy": "3.0.0",
     "@powerfulyang/lint": "3.2.1",
-    "@rollup/plugin-typescript": "11.1.0",
-    "@types/node": "20.1.2",
+    "@rollup/plugin-typescript": "11.1.1",
+    "@types/node": "20.2.5",
     "canvas": "2.11.2",
     "typescript": "5.0.4"
   }
