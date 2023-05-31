@@ -5,7 +5,6 @@ export * from './common';
 export * from './decorators';
 export * from './dom';
 export * from './enum';
-export * from './qrcode';
 export * from './scroll';
 export * from './type';
 export * from './utils';

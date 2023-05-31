@@ -61,7 +61,6 @@
   "dependencies": {
     "hast-util-raw": "8.0.0",
     "mdast-util-to-markdown": "1.5.0",
-    "qrcode-generator": "1.4.4",
     "reflect-metadata": "0.1.13",
     "rehype-parse": "8.0.4",
     "rehype-remark": "9.1.2",
@@ -79,7 +78,6 @@
     "@powerfulyang/lint": "3.2.1",
     "@rollup/plugin-typescript": "11.1.1",
     "@types/node": "20.2.5",
-    "canvas": "2.11.2",
     "typescript": "5.0.4"
   }
 }
