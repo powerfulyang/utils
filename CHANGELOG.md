@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.11.2](https://github.com/powerfulyang/utils/compare/v1.11.1...v1.11.2) (2023-05-31)
+
+
+### Bug Fixes
+
+* katex convert ([e593045](https://github.com/powerfulyang/utils/commit/e5930454eefd0de5699e8c08a97b3a6f241dccb1))
+* katex convert ([e0817be](https://github.com/powerfulyang/utils/commit/e0817be63dd26a217739b2246191aa785f18ff60))
+
 ## [1.11.1](https://github.com/powerfulyang/utils/compare/v1.11.0...v1.11.1) (2023-05-31)
 
 
