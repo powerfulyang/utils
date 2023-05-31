@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.1](https://github.com/powerfulyang/utils/compare/v1.11.0...v1.11.1) (2023-05-31)
+
+
+### Bug Fixes
+
+* remove qrcode functions ([17af784](https://github.com/powerfulyang/utils/commit/17af78491ffb87897facbc14cbe122388672ea0b))
+
 ## [1.11.0](https://github.com/powerfulyang/utils/compare/v1.10.2...v1.11.0) (2023-05-30)
 
 
