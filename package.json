@@ -75,7 +75,7 @@
   "devDependencies": {
     "@jest/globals": "29.5.0",
     "@powerfulyang/clipboardy": "3.0.0",
-    "@powerfulyang/lint": "3.2.1",
+    "@powerfulyang/lint": "3.3.0",
     "@rollup/plugin-typescript": "11.1.1",
     "@types/node": "20.2.5",
     "typescript": "5.0.4"
