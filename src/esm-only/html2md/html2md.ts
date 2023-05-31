@@ -29,9 +29,9 @@ export async function html2md(html: string): Promise<string> {
     .use(rehypeParse, {
       fragment: true,
     })
+    .use(katexToMarkdownPlugin)
     .use(preToMarkdownPlugin)
     .use(rehypeRemoveComments)
-    .use(katexToMarkdownPlugin)
     .use(rehypeRemark, {
       unchecked: '[ ] ',
       checked: '[x] ',
