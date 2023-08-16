@@ -1,7 +1,8 @@
+import { describe, expect, it } from '@jest/globals';
+import { getType } from '@/assertion/getType';
 import {
   getInstanceType,
   getPrototype,
-  getType,
   isArray,
   isBlob,
   isDefined,
@@ -12,8 +13,6 @@ import {
   isNil,
   isNotNil,
   isNotNull,
-  isNumber,
-  isNumeric,
   isObject,
   isPlainObject,
   isPrimitive,
@@ -21,7 +20,6 @@ import {
   isUndefined,
   isVoid,
 } from '@/assertion';
-import { describe, expect, it } from '@jest/globals';
 
 describe('assertion', () => {
   class Test {}
@@ -39,45 +37,7 @@ describe('assertion', () => {
     expect(isUndefined(() => {})).toBe(false);
     expect(isDefined(1)).toBe(true);
   });
-  /**
-   * isNumber
-   */
-  it('isNumber', () => {
-    expect(isNumber(undefined)).toBe(false);
-    expect(isNumber(null)).toBe(false);
-    expect(isNumber('')).toBe(false);
-    expect(isNumber('0')).toBe(false);
-    expect(isNumber(0)).toBe(true);
-    expect(isNumber(Number.MAX_VALUE)).toBe(true);
-    expect(isNumber(Number.POSITIVE_INFINITY)).toBe(false);
-    expect(isNumber(Number.MAX_SAFE_INTEGER)).toBe(true);
-    expect(isNumber(Number.NaN)).toBe(false);
-    expect(isNumber(Number.MIN_SAFE_INTEGER)).toBe(true);
-  });
-  /**
-   * isNumeric
-   */
-  it('isNumeric', () => {
-    expect(isNumeric(undefined)).toBe(false);
-    expect(isNumeric(null)).toBe(false);
-    expect(isNumeric('')).toBe(false);
-    expect(isNumeric('0')).toBe(true);
-    expect(isNumeric('+0')).toBe(true);
-    expect(isNumeric('+1')).toBe(true);
-    expect(isNumeric('1+')).toBe(false);
-    expect(isNumeric('1-')).toBe(false);
-    expect(isNumeric('0.0.1')).toBe(false);
-    expect(isNumeric('0.0')).toBe(true);
-    expect(isNumeric('--0.0')).toBe(false);
-    expect(isNumeric('-0.0')).toBe(true);
-    expect(isNumeric('1e2')).toBe(true);
-    expect(isNumeric(0)).toBe(true);
-    expect(isNumeric(Number.MAX_VALUE)).toBe(true);
-    expect(isNumeric(Number.POSITIVE_INFINITY)).toBe(false);
-    expect(isNumeric(Number.MAX_SAFE_INTEGER)).toBe(true);
-    expect(isNumeric(Number.NaN)).toBe(false);
-    expect(isNumeric(Number.MIN_SAFE_INTEGER)).toBe(true);
-  });
+
   /**
    * isArray
    */
@@ -101,81 +61,6 @@ describe('assertion', () => {
     expect(typeof undefined).toBe('undefined');
     expect(isObject(null)).toBe(false);
     expect(isObject(undefined)).toBe(false);
-  });
-
-  /**
-   * getType
-   */
-  it('getType', () => {
-    expect(getType(undefined)).toBe('Undefined');
-    expect(getType(null)).toBe('Null');
-    // Object.create(null) 特殊的对象，它的原型是 null
-    expect(getType(Object.create(null))).toBe('Object');
-    expect(getType('')).toBe('String');
-    expect(getType(Symbol('test'))).toBe('Symbol');
-    expect(getType(0)).toBe('Number');
-    expect(getType(Number.MAX_VALUE)).toBe('Number');
-    expect(getType(Number.POSITIVE_INFINITY)).toBe('Number');
-    expect(getType(Number.MAX_SAFE_INTEGER)).toBe('Number');
-    expect(getType(Number.NaN)).toBe('Number');
-    expect(getType(Number.MIN_SAFE_INTEGER)).toBe('Number');
-    expect(getType(() => {})).toBe('Function');
-    expect(getType(Test)).toBe('Function');
-    expect(getType(t)).toBe('Object');
-    expect(getType([])).toBe('Array');
-    expect(getType({})).toBe('Object');
-    expect(getType(Buffer.from(''))).toBe('Uint8Array');
-    expect(getType(Buffer)).toBe('Function');
-    expect(getType(new Date())).toBe('Date');
-    expect(getType(/test/)).toBe('RegExp');
-    expect(getType(new Error())).toBe('Error');
-    expect(getType(new Map())).toBe('Map');
-    expect(getType(new Set())).toBe('Set');
-    expect(getType(new WeakMap())).toBe('WeakMap');
-    expect(getType(new WeakSet())).toBe('WeakSet');
-    expect(getType(new Promise(() => {}))).toBe('Promise');
-    expect(getType(new Int8Array())).toBe('Int8Array');
-    expect(getType(new Uint8Array())).toBe('Uint8Array');
-    expect(getType(new Uint8ClampedArray())).toBe('Uint8ClampedArray');
-    expect(getType(new Int16Array())).toBe('Int16Array');
-    expect(getType(new Uint16Array())).toBe('Uint16Array');
-    expect(getType(new Int32Array())).toBe('Int32Array');
-    expect(getType(new Uint32Array())).toBe('Uint32Array');
-    expect(getType(new Float32Array())).toBe('Float32Array');
-    expect(getType(new Float64Array())).toBe('Float64Array');
-    expect(getType(new BigInt64Array())).toBe('BigInt64Array');
-    expect(getType(new BigUint64Array())).toBe('BigUint64Array');
-    expect(getType(new ArrayBuffer(4))).toBe('ArrayBuffer');
-    expect(getType(new SharedArrayBuffer(4))).toBe('SharedArrayBuffer');
-    expect(getType(new DataView(new ArrayBuffer(4)))).toBe('DataView');
-    expect(getType(new URL('https://www.baidu.com'))).toBe('URL');
-    expect(getType(new URLSearchParams('a=1'))).toBe('URLSearchParams');
-    const searchParams = new URLSearchParams('??a=1');
-    expect(searchParams.toString()).toBeDefined();
-    expect(getType(searchParams)).toBe('URLSearchParams');
-    expect(getType(new EventTarget())).toBe('EventTarget');
-    expect(
-      getType(
-        new Event('test', {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-        }),
-      ),
-    ).toBe('Event');
-    expect(
-      getType(
-        new CustomEvent('test', {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-        }),
-      ),
-    ).toBe('CustomEvent');
-    expect(getType(new Blob(['test'], { type: 'text/plain' }))).toBe('Blob');
-    expect(getType(new File([], 'test.txt', { type: 'text/plain' }))).toBe('File');
-    expect(getType(new FormData())).toBe('FormData');
-    expect(getType(new Headers())).toBe('Headers');
   });
 
   /**

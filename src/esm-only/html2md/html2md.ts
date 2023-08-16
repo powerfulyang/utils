@@ -1,4 +1,3 @@
-import { preToMarkdownPlugin, katexToMarkdownPlugin } from '@/esm-only/html2md/plugin';
 import type { Unsafe } from 'mdast-util-to-markdown';
 import { defaultHandlers } from 'mdast-util-to-markdown';
 import rehypeParse from 'rehype-parse';
@@ -8,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import remarkStringify from 'remark-stringify';
 import stringWidth from 'string-width';
 import { unified } from 'unified';
+import { katexToMarkdownPlugin, preToMarkdownPlugin } from '@/esm-only/html2md/plugin';
 import { convertURLToAbsoluteURL } from './convertURLToAbsoluteURL';
 
 const { text, link, code } = defaultHandlers;

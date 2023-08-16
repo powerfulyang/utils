@@ -8,3 +8,4 @@ export * from './enum';
 export * from './scroll';
 export * from './type';
 export * from './utils';
+export * from './url';

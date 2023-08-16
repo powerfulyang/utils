@@ -1,0 +1,10 @@
+{
+  "upgrade": true,
+  "reject": [
+    "hast-util-raw",
+    "mdast-util-to-markdown",
+    "unified",
+    "unist-util-visit",
+    "string-width"
+  ]
+}

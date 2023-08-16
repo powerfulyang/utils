@@ -1,17 +1,18 @@
-import type { Node } from 'hast-util-raw/lib';
+import type { Root } from 'hast-util-raw/lib';
 import type { Preset } from 'unified';
 import { visit } from 'unist-util-visit';
 
 export const preToMarkdownPlugin = (() => {
-  return (tree: Node) => {
+  return (tree: Root) => {
     visit(tree, 'element', (node) => {
-      if (node.tagName === 'pre') {
+      const _node = node;
+      if (_node.tagName === 'pre') {
         const filtered = [];
-        if (node.children.length === 1 && node.children[0].type === 'text') {
-          filtered.push(node.children[0]);
+        if (_node.children.length === 1 && _node.children[0].type === 'text') {
+          filtered.push(_node.children[0]);
         } else {
           // Remove all children except code. deep search
-          const helper = node.children;
+          const helper = _node.children;
 
           while (helper.length !== 0) {
             const current = helper.pop();
@@ -24,7 +25,7 @@ export const preToMarkdownPlugin = (() => {
             }
           }
         }
-        Reflect.set(node, 'children', filtered);
+        _node.children = filtered;
       }
     });
     return tree;
@@ -32,11 +33,11 @@ export const preToMarkdownPlugin = (() => {
 }) as Preset;
 
 export const katexToMarkdownPlugin = (() => {
-  return (tree: Node) => {
+  return (tree: Root) => {
     visit(tree, 'element', (node) => {
-      // @ts-ignore
-      if (node.tagName === 'span' && node.properties?.className?.includes('katex')) {
-        const helper = node.children;
+      const _node = node;
+      if (_node.tagName === 'span' && (_node.properties?.className as string)?.includes('katex')) {
+        const helper = _node.children;
         const filtered = [];
         while (helper.length !== 0) {
           const current = helper.pop();
@@ -57,7 +58,7 @@ export const katexToMarkdownPlugin = (() => {
             }
           }
         }
-        Reflect.set(node, 'children', filtered);
+        _node.children = filtered;
       }
     });
     return tree;

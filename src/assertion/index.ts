@@ -1,64 +1,9 @@
+import { getType } from '@/assertion/getType';
 import type { Dict, Falsy, Nil, NonUndefined, Primitive } from '@/type';
 
-type Type =
-  | 'Number'
-  | 'String'
-  | 'Boolean'
-  | 'Array'
-  | 'Object'
-  | 'Function'
-  | 'Null'
-  | 'Undefined'
-  | 'Blob'
-  | 'Date'
-  | 'ArrayBuffer'
-  | 'DataView'
-  | 'RegExp'
-  | 'Map'
-  | 'Set'
-  | 'WeakMap'
-  | 'WeakSet'
-  | 'Promise'
-  | 'Generator'
-  | 'AsyncFunction'
-  | 'Symbol'
-  | 'BigInt'
-  | string;
+export { getType };
 
-/**
- * @description 获取类型
- * @param value any
- * @example
- * getType(1) === 'Number'
- * getType('1') === 'String'
- * getType(true) === 'Boolean'
- * getType([]) === 'Array'
- * getType({}) === 'Object'
- * getType(() => {}) === 'Function'
- * getType(null) === 'Null'
- * getType(undefined) === 'Undefined'
- * getType(new Blob()) === 'Blob'
- * getType(new Date()) === 'Date'
- */
-export const getType = (value: any): Type => {
-  return Object.prototype.toString.call(value).slice(8, -1) as Type;
-};
-
-/**
- * @description Infinity、NaN 为 false
- * @description 0、Number.MAX_VALUE、Number.MIN_VALUE 为 true
- */
-export function isNumber(value: any): value is number {
-  return getType(value) === 'Number' && !Number.isNaN(value) && Number.isFinite(value);
-}
-
-/**
- * @description Infinity、NaN 为 false
- * @description '+1.2'、'-0.0'、'1e2' 为 true
- */
-export function isNumeric(value: any) {
-  return value != null && value - parseFloat(value) + 1 >= 0;
-}
+export * from './isNumber';
 
 /**
  * @description 是否为数组
@@ -69,7 +14,12 @@ export function isArray<T>(value: any): value is Array<T> {
 
 /**
  * @description Asserts that the value is Falsy.
- * @example `false`, `0`, `''`, `null`, `undefined`
+ * @example
+ * isFalsy(false) === true
+ * isFalsy(0) === true
+ * isFalsy('') === true
+ * isFalsy(null) === true
+ * isFalsy(undefined) === true
  */
 export function isFalsy(value: any): value is Falsy {
   return value === false || value === '' || value === 0 || value === null || value === undefined;
@@ -77,7 +27,9 @@ export function isFalsy(value: any): value is Falsy {
 
 /**
  * @description Asserts that the value is Nil. `null`, `undefined`
- * @example `null`, `undefined`
+ * @example
+ * isNil(null) === true
+ * isNil(undefined) === true
  */
 export function isNil(value: any): value is Nil {
   return value === undefined || value === null;
