@@ -3,3 +3,4 @@ export * from './capitalize';
 export * from './debounce';
 export * from './uniqueId';
 export * from './waitFor';
+export * from './waitForPromise';
