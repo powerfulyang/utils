@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.12.0](https://github.com/powerfulyang/utils/compare/v1.11.2...v1.12.0) (2023-08-22)
+
+
+### Features
+
+* extractURLParams ([dfdb58d](https://github.com/powerfulyang/utils/commit/dfdb58dc03a80a3a826b664b59ef6ae5538c9743))
+* extractURLParams ([fb77cf9](https://github.com/powerfulyang/utils/commit/fb77cf9444438580a493c6b6ca5ed5add40969a5))
+* waitForPromise.ts ([98cbb21](https://github.com/powerfulyang/utils/commit/98cbb2125ea6a0b29b4c626210a25de15ced579c))
+* waitForPromise.ts ([b200a27](https://github.com/powerfulyang/utils/commit/b200a27b31794c82ca5d6dc8deea40be1a1f1a0b))
+
 ## [1.11.2](https://github.com/powerfulyang/utils/compare/v1.11.1...v1.11.2) (2023-05-31)
 
 
