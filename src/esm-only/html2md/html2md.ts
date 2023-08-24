@@ -7,7 +7,11 @@ import remarkGfm from 'remark-gfm';
 import remarkStringify from 'remark-stringify';
 import stringWidth from 'string-width';
 import { unified } from 'unified';
-import { katexToMarkdownPlugin, preToMarkdownPlugin } from '@/esm-only/html2md/plugin';
+import {
+  katexToMarkdownPlugin,
+  preToMarkdownPlugin,
+  tableToMarkdownPlugin,
+} from '@/esm-only/html2md/plugin';
 import { convertURLToAbsoluteURL } from './convertURLToAbsoluteURL';
 
 const { text, link, code } = defaultHandlers;
@@ -29,6 +33,7 @@ export async function html2md(html: string): Promise<string> {
     .use(rehypeParse, {
       fragment: true,
     })
+    .use(tableToMarkdownPlugin)
     .use(katexToMarkdownPlugin)
     .use(preToMarkdownPlugin)
     .use(rehypeRemoveComments)

@@ -4,9 +4,7 @@ import { html2md } from './html2md';
 
 describe('html2md', () => {
   it('should convert table to markdown', async () => {
-    const html = `
-    <table class="table">
-      <thead>
+    const part = `<thead>
         <tr>
           <th>name</th>
           <th>type</th>
@@ -24,16 +22,20 @@ describe('html2md', () => {
           <td>string</td>
           <td>version</td>
         </tr>
-      </tbody>
+      </tbody>`;
+    const html = `
+    <table class="table">
+      ${part}
     </table>
     `;
-    const md = await html2md(html);
-    expect(md).toBe(
-      `| name    | type   | description |
+    const partMd = await html2md(part);
+    const result = `| name    | type   | description |
 | ------- | ------ | ----------- |
 | name    | string | name        |
-| version | string | version     |`,
-    );
+| version | string | version     |`;
+    expect(partMd).toBe(result);
+    const md = await html2md(html);
+    expect(md).toBe(result);
   });
 
   it('should convert ul to markdown', async () => {
@@ -132,5 +134,23 @@ e=E-1023`);
     const md = await html2md(html);
     expect(md).toBe(`$ x= (-1)^ {S} \\times (1.M) \\times 2^ {e} $\\
 e=E-1023`);
+  });
+
+  it('来自张鑫旭的网站代码块01', async () => {
+    const html = `<pre tabindex="0" class="hljs language-lua"><a href="javascript:" class="copy" tabindex="0" title="复制"><svg class="icon-copy"><use xlink:href="#icon-copy"></use></svg></a><a href="javascript:" class="beatuy revert" tabindex="0" title="还原"><svg class="icon-palette"><use xlink:href="#icon-palette"></use></svg></a>&lt;<span class="hljs-built_in">input</span> name=<span class="hljs-string">"code"</span> autocomplete=<span class="hljs-string">"username"</span>&gt;</pre>`;
+    const md = await html2md(html);
+    expect(md).toBe(`\`\`\`
+<input name="code" autocomplete="username">
+\`\`\``);
+  });
+
+  it('来自张鑫旭的网站代码块02', async () => {
+    const html = `<pre tabindex="0" class="hljs language-ruby"><a href="javascript:" class="copy" tabindex="0" title="复制"><svg class="icon-copy"><use xlink:href="#icon-copy"></use></svg></a><a href="javascript:" class="beatuy " tabindex="0" title="美化"><svg class="icon-palette"><use xlink:href="#icon-palette"></use></svg></a>:-webkit-autofill { background-color: transparent; }
+:autofill { background-color: transparent; }</pre>`;
+    const md = await html2md(html);
+    expect(md).toBe(`\`\`\`
+:-webkit-autofill { background-color: transparent; }
+:autofill { background-color: transparent; }
+\`\`\``);
   });
 });

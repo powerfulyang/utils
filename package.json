@@ -63,7 +63,7 @@
     "mdast-util-to-markdown": "1.5.0",
     "qs": "6.11.2",
     "reflect-metadata": "0.1.13",
-    "rehype-parse": "8.0.4",
+    "rehype-parse": "8.0.5",
     "rehype-remark": "9.1.2",
     "rehype-remove-comments": "5.0.0",
     "remark-gfm": "3.0.1",
@@ -74,13 +74,13 @@
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
-    "@jest/globals": "29.6.2",
+    "@jest/globals": "29.6.3",
     "@powerfulyang/clipboardy": "3.0.0",
     "@powerfulyang/lint": "3.7.0",
     "@rollup/plugin-typescript": "11.1.2",
-    "@types/node": "20.5.0",
+    "@types/node": "20.5.4",
     "@types/qs": "6.9.7",
-    "rollup": "3.28.0",
+    "rollup": "3.28.1",
     "typescript": "5.1.6"
   }
 }

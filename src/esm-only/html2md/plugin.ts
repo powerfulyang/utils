@@ -2,10 +2,32 @@ import type { Root } from 'hast-util-raw/lib';
 import type { Preset } from 'unified';
 import { visit } from 'unist-util-visit';
 
+// 兼容丢失了 table 元素的情况, 例如: <thead>...</thead>
+export const tableToMarkdownPlugin = (() => {
+  return (tree: Root) => {
+    const first = tree.children[0];
+    if (first.type === 'element' && first.tagName === 'thead') {
+      const _children = tree.children;
+      // eslint-disable-next-line no-param-reassign
+      tree.children = [
+        {
+          type: 'element',
+          tagName: 'table',
+          // @ts-ignore
+          children: _children,
+          properties: {},
+        },
+      ];
+    }
+    return tree;
+  };
+}) as Preset;
+
 export const preToMarkdownPlugin = (() => {
   return (tree: Root) => {
     visit(tree, 'element', (node) => {
       const _node = node;
+      const childrenText = [];
       if (_node.tagName === 'pre') {
         const filtered = [];
         if (_node.children.length === 1 && _node.children[0].type === 'text') {
@@ -23,7 +45,14 @@ export const preToMarkdownPlugin = (() => {
                 helper.push(...current.children);
               }
             }
+            if (current?.type === 'text') {
+              childrenText.unshift(current);
+            }
           }
+        }
+        // 基于上面的筛选之后，如果是空字符，那么遍历所有的
+        if (filtered.length === 0) {
+          filtered.push(...childrenText);
         }
         _node.children = filtered;
       }
