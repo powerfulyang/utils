@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/powerfulyang/utils/compare/v1.12.0...v1.13.0) (2023-08-24)
+
+
+### Features
+
+* 兼容一些 html2md 的奇怪情况 ([de530f5](https://github.com/powerfulyang/utils/commit/de530f52f5d4d6c5130a6445add86da605ed5a1a))
+
 ## [1.12.0](https://github.com/powerfulyang/utils/compare/v1.11.2...v1.12.0) (2023-08-22)
 
 
