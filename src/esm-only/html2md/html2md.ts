@@ -14,7 +14,7 @@ import {
 } from '@/esm-only/html2md/plugin';
 import { convertURLToAbsoluteURL } from './convertURLToAbsoluteURL';
 
-const { text, link, code } = defaultHandlers;
+const { text, link, code, image } = defaultHandlers;
 
 /**
  * @description By default, mdast-util-to-markdown will escape some characters in some
@@ -82,6 +82,17 @@ export async function html2md(html: string): Promise<string> {
             {
               ...node,
               value,
+            },
+            parent,
+            context,
+            safeOptions,
+          );
+        },
+        image: (node, parent, context, safeOptions) => {
+          return image(
+            {
+              ...node,
+              url: convertURLToAbsoluteURL(node.url),
             },
             parent,
             context,

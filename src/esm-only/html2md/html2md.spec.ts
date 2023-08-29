@@ -153,4 +153,18 @@ e=E-1023`);
 :autofill { background-color: transparent; }
 \`\`\``);
   });
+
+  it('convert image', async () => {
+    const html = `<img width="100" title="img title" height="200" src="/assets/images/2021/08/20210804153000.png" alt="image-20210804153000000" />`;
+    const md = await html2md(html);
+    expect(md).toBe(
+      `![image-20210804153000000](http://localhost/assets/images/2021/08/20210804153000.png "img title")`,
+    );
+  });
+
+  it('convert url', async () => {
+    const html = `<a href="/post/1">post title</a>`;
+    const md = await html2md(html);
+    expect(md).toBe(`[post title](http://localhost/post/1)`);
+  });
 });
