@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.14.0](https://github.com/powerfulyang/utils/compare/v1.13.0...v1.14.0) (2023-08-29)
+
+
+### Features
+
+* swagger tool ([865e36b](https://github.com/powerfulyang/utils/commit/865e36b7bdbd3888a3e3190f047d0c9e97f80f6b))
+
+
+### Bug Fixes
+
+* **html2md:** use absolute URLs rather than relative URLs to ensure the reliability and accessibility of linked resources. ([b12bb4c](https://github.com/powerfulyang/utils/commit/b12bb4cc6bb1b5954ed923fcb0627eb8c0307ab5))
+
 ## [1.13.0](https://github.com/powerfulyang/utils/compare/v1.12.0...v1.13.0) (2023-08-24)
 
 
